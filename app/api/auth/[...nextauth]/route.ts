@@ -33,8 +33,6 @@ export const authOptions: NextAuthOptions = {
             {
               model: models.UserRole,
               required: false,
-              //@ts-ignore
-              include: { model: models.Permission, required: false },
             },
           ],
         });

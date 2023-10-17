@@ -9,6 +9,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.UUID,
       },
+      userRoleId: {
+        type: Sequelize.UUID,
+        references: { model: "UserRoles", key: "id" },
+      },
       username: {
         type: Sequelize.STRING,
       },
@@ -23,34 +27,6 @@ module.exports = {
       },
       email: {
         type: Sequelize.STRING,
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-      },
-    });
-    await queryInterface.createTable("UserUserRoles", {
-      UserId: {
-        type: Sequelize.UUID,
-        references: {
-          model: "Users",
-          key: "id",
-        },
-        onUpdate: "CASCADE",
-        onDelete: "CASCADE",
-      },
-      UserRoleId: {
-        type: Sequelize.UUID,
-        references: {
-          model: "UserRoles",
-          key: "id",
-        },
-        onUpdate: "CASCADE",
-        onDelete: "CASCADE",
       },
       createdAt: {
         allowNull: false,

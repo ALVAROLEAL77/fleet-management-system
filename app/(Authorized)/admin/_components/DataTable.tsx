@@ -39,6 +39,10 @@ import { useState } from "react";
 export type DataTableProps<Data> = {
   data: Data[];
   columns: ColumnDef<Data>[];
+  deleteData: (id: string) => void;
+  cns?: string;
+  name?: string;
+  refetch?: () => void;
 };
 
 export function DataTable<Data>({
@@ -46,11 +50,13 @@ export function DataTable<Data>({
   columns,
   cns,
   name,
+  deleteData,
+  refetch,
+  Update,
 }: DataTableProps<Data>) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
   const [globalFilter, setGlobalFilter] = useState<string>("");
-
   const table = useReactTable({
     data,
     columns,
@@ -70,6 +76,7 @@ export function DataTable<Data>({
   return (
     <div className={cns + " text-primary font-rock tracking-widest font-thin "}>
       {name && name}
+
       <div className="flex items-center py-4">
         <Input
           placeholder="Filter..."
@@ -138,27 +145,25 @@ export function DataTable<Data>({
                   className="!border-double border-secondary border-b-2 hover:bg-opacity-5 backdrop-blur-md hover:bg-white"
                 >
                   {row.getVisibleCells().map((cell) => {
-                    if (cell.column.id != "actions")
+                    if (!(cell.column.id != "actions"))
                       return (
-                        <TableCell key={cell.id}>
-                          {
-                            //@ts-ignore
-                            cell.getValue()
-                          }
+                        <TableCell key={"actions"} className="flex py-10">
+                          <PiTrashSimpleDuotone
+                            onClick={() => {
+                              refetch();
+                              deleteData(row.getValue("id"));
+                            }}
+                            className="text-red-800 text-2xl cursor-pointer"
+                          />
+                          <Update refetch={refetch} id={row.getValue("id")} />
                         </TableCell>
                       );
                     return (
-                      <TableCell key={"actions"} className="flex py-10">
-                        <PiTrashSimpleDuotone
-                          onClick={() => deleteData(row.getValue("id"))}
-                          className="text-red-800 text-2xl cursor-pointer"
-                        />
-                        <PiRecycleDuotone
-                          onClick={() => {
-                            updateData(row.values.id);
-                          }}
-                          className="text-green-800  text-2xl cursor-pointer"
-                        />
+                      <TableCell key={cell.id}>
+                        {
+                          //@ts-ignore
+                          cell.getValue()
+                        }
                       </TableCell>
                     );
                   })}

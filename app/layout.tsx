@@ -44,7 +44,7 @@ export default function RootLayout({
           transition={Slide}
         />
         <div className="absolute inset-0 w-1/2 h-1/4 bg-gradient-to-br from-secondary via-transparent to-transparent"></div>
-        <div className="bg-dark-bg">
+        <div className="bg-tertiary">
           <SessionProvider>{children}</SessionProvider>
         </div>
       </body>

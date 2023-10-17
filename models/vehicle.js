@@ -9,9 +9,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Vehicle.hasMany(models.Trip);
-      Vehicle.hasMany(models.MaintenanceRecord);
-      Vehicle.hasMany(models.FuelingRecord);
-      Vehicle.hasMany(models.Expense);
+      Vehicle.hasMany(models.MaintenanceRecord, { foreignKey: "vehicleId" });
+      Vehicle.hasMany(models.FuelingRecord, { foreignKey: "vehicleId" });
+      Vehicle.hasMany(models.Expense, { foreignKey: "vehicleId" });
     }
   }
   Vehicle.init(

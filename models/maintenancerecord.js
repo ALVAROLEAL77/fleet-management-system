@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      MaintenanceRecord.belongsTo(models.Vehicle);
+      MaintenanceRecord.belongsTo(models.Vehicle, { foreignKey: "vehicleId" });
     }
   }
   MaintenanceRecord.init(
@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       maintenanceDate: DataTypes.DATE,
       maintenanceCost: DataTypes.FLOAT,
       notes: DataTypes.TEXT,
+      vehicleId: DataTypes.UUID,
     },
     {
       sequelize,

@@ -8,16 +8,17 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      FuelingRecord.belongsTo(models.Vehicle);
+      FuelingRecord.belongsTo(models.Vehicle, { foreignKey: "vehicleId" });
     }
   }
   FuelingRecord.init(
     {
       fuelingDate: DataTypes.DATE,
-      VehicleId: DataTypes.UUID,
+      vehicleId: DataTypes.UUID,
       fuelingLocation: DataTypes.STRING,
       gallonsFilled: DataTypes.FLOAT,
       totalCost: DataTypes.FLOAT,
+      fuelType: DataTypes.STRING,
     },
     {
       sequelize,

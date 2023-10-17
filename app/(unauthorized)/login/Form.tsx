@@ -19,11 +19,11 @@ const HForm = ({ callBack }: any) => {
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <Link
             href="#"
-            className="flex items-center mb-2 md:text-5xl text-3xl font-semibold font-neon h-20 space-x-9 bg-gradient-to-tl via-secondary from-tertiary to-primary text-transparent bg-clip-text text-center"
+            className="flex items-center mb-2 md:text-4xl text-3xl font-semibold font-neon h-20 space-x-9 bg-gradient-to-tl via-secondary from-tertiary to-primary text-transparent  bg-clip-text text-center drop-shadow-[0px_3px_12px_rgba(82,109,130,1)]"
           >
             Fleet Management System
           </Link>
-          <div className="w-full md:w-1/2 bg-black bg-opacity-30 backdrop-blur-3xl rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 !border-double border-secondary border-4">
+          <div className="w-full md:w-1/2 bg-black bg-opacity-30 backdrop-blur-3xl rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 !border-double border-secondary border-4 drop-shadow-[0px_3px_12px_rgba(82,109,130,1)]">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
               <h1 className="flex justify-center text-md font-bold leading-tight text-secondary font-neon md:text-2xl">
                 Sign-in

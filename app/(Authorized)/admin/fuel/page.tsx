@@ -5,9 +5,8 @@ import { useEffect, useState } from "react";
 import { PiPersonFill, PiPlusSquareDuotone } from "react-icons/pi";
 import { Button } from "../_components/ui/button";
 import Create from "./Create";
-import Update from "./Update";
 
-const Driver = () => {
+const Customer = () => {
   const path = usePathname();
   const [data, setData] = useState([]);
   const [columns, setCols] = useState([
@@ -16,35 +15,37 @@ const Driver = () => {
       header: "ID",
     },
     {
-      accessorKey: "firstName",
-      header: "First Name",
+      accessorKey: "fuelingDate",
+      header: "fueling Date",
     },
     {
-      accessorKey: "lastName",
-      header: "Last Name",
+      accessorKey: "fuelingLocation",
+      header: "Fueling Location",
+    },
+
+    {
+      accessorKey: "fuelType",
+      header: "Fuel Type",
     },
     {
-      accessorKey: "contactEmail",
-      header: "Email",
+      accessorKey: "gallonsFilled",
+      header: "Gallons Filled",
     },
-    {
-      accessorKey: "driverStatus",
-      header: "Driver Status",
-    },
+
     {
       accessorKey: "actions",
       header: "Actions",
     },
   ]);
   const refetch = () => {
-    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/driver")
+    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/fuelingrecord")
       .then((res) => res.json())
       .then((res) => {
         setData(res);
       });
   };
   useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/driver", {
+    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/fuelingrecord", {
       next: { revalidate: 0 },
     })
       .then((res) => res.json())
@@ -54,7 +55,7 @@ const Driver = () => {
   }, []);
   console.log(data);
   function deleteData(id) {
-    return fetch(process.env.NEXT_PUBLIC_APP_URL + `api/driver/${id}`, {
+    return fetch(process.env.NEXT_PUBLIC_APP_URL + `api/fuelingrecord/${id}`, {
       method: "delete",
       headers: { "Content-Types": "application/json" },
     }).then();
@@ -73,13 +74,12 @@ const Driver = () => {
         cns={
           "w-full !border-double border-secondary border-2 p-4 rounded-lg shadow-md shadow-secondary drop-shadow-[0px_3px_10px_rgba(82,109,130,1)]"
         }
-        name={"Drivers"}
+        name={"Fuel Records"}
         refetch={refetch}
         deleteData={deleteData}
-        Update={Update}
       />
     </div>
   );
 };
 
-export default Driver;
+export default Customer;

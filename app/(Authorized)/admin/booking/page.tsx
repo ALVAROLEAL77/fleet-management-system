@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { PiPersonFill, PiPlusSquareDuotone } from "react-icons/pi";
 import { Button } from "../_components/ui/button";
 import Create from "./Create";
-import Update from "./Update";
 
 const Driver = () => {
   const path = usePathname();
@@ -16,35 +15,35 @@ const Driver = () => {
       header: "ID",
     },
     {
-      accessorKey: "firstName",
-      header: "First Name",
+      accessorKey: "bookingDate",
+      header: "Booking Date",
     },
     {
-      accessorKey: "lastName",
-      header: "Last Name",
+      accessorKey: "startLocation",
+      header: "Start Location",
     },
     {
-      accessorKey: "contactEmail",
-      header: "Email",
+      accessorKey: "endLocation",
+      header: "End Location",
     },
     {
-      accessorKey: "driverStatus",
-      header: "Driver Status",
+      accessorKey: "tripPurpose",
+      header: "Trip Purpose",
     },
     {
-      accessorKey: "actions",
-      header: "Actions",
+      accessorKey: "status",
+      header: "Status",
     },
   ]);
   const refetch = () => {
-    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/driver")
+    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/booking")
       .then((res) => res.json())
       .then((res) => {
         setData(res);
       });
   };
   useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/driver", {
+    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/booking", {
       next: { revalidate: 0 },
     })
       .then((res) => res.json())
@@ -54,7 +53,7 @@ const Driver = () => {
   }, []);
   console.log(data);
   function deleteData(id) {
-    return fetch(process.env.NEXT_PUBLIC_APP_URL + `api/driver/${id}`, {
+    return fetch(process.env.NEXT_PUBLIC_APP_URL + `api/booking/${id}`, {
       method: "delete",
       headers: { "Content-Types": "application/json" },
     }).then();
@@ -73,7 +72,7 @@ const Driver = () => {
         cns={
           "w-full !border-double border-secondary border-2 p-4 rounded-lg shadow-md shadow-secondary drop-shadow-[0px_3px_10px_rgba(82,109,130,1)]"
         }
-        name={"Drivers"}
+        name={"Booking"}
         refetch={refetch}
         deleteData={deleteData}
         Update={Update}

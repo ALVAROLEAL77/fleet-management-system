@@ -9,6 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.UUID,
       },
+
       startLocation: {
         type: Sequelize.STRING,
       },

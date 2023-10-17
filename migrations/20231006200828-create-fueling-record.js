@@ -15,7 +15,10 @@ module.exports = {
       fuelingLocation: {
         type: Sequelize.STRING,
       },
-      VehicleId: {
+      fuelType: {
+        type: Sequelize.STRING,
+      },
+      vehicleId: {
         type: Sequelize.UUID,
         references: {
           model: "Vehicles",
@@ -30,6 +33,7 @@ module.exports = {
       totalCost: {
         type: Sequelize.FLOAT,
       },
+
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

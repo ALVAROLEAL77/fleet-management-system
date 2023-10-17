@@ -7,7 +7,7 @@ import { Button } from "../_components/ui/button";
 import Create from "./Create";
 import Update from "./Update";
 
-const Driver = () => {
+const Customer = () => {
   const path = usePathname();
   const [data, setData] = useState([]);
   const [columns, setCols] = useState([
@@ -16,35 +16,37 @@ const Driver = () => {
       header: "ID",
     },
     {
-      accessorKey: "firstName",
-      header: "First Name",
+      accessorKey: "maintenanceType",
+      header: "Maintenance Type",
     },
     {
-      accessorKey: "lastName",
-      header: "Last Name",
+      accessorKey: "maintenanceDate",
+      header: "Maintenance Date",
+    },
+
+    {
+      accessorKey: "maintenanceCost",
+      header: "Maintenance Cost",
     },
     {
-      accessorKey: "contactEmail",
-      header: "Email",
+      accessorKey: "vehicleId",
+      header: "Vehicle Id",
     },
-    {
-      accessorKey: "driverStatus",
-      header: "Driver Status",
-    },
+
     {
       accessorKey: "actions",
       header: "Actions",
     },
   ]);
   const refetch = () => {
-    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/driver")
+    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/maintenancerecord")
       .then((res) => res.json())
       .then((res) => {
         setData(res);
       });
   };
   useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/driver", {
+    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/maintenancerecord", {
       next: { revalidate: 0 },
     })
       .then((res) => res.json())
@@ -54,10 +56,13 @@ const Driver = () => {
   }, []);
   console.log(data);
   function deleteData(id) {
-    return fetch(process.env.NEXT_PUBLIC_APP_URL + `api/driver/${id}`, {
-      method: "delete",
-      headers: { "Content-Types": "application/json" },
-    }).then();
+    return fetch(
+      process.env.NEXT_PUBLIC_APP_URL + `api/maintenancerecord/${id}`,
+      {
+        method: "delete",
+        headers: { "Content-Types": "application/json" },
+      }
+    ).then();
   }
   return (
     <div className="w-full rounded-2xl border-double border-secondary border-2 backdrop-blur-3xl shadow-md shadow-secondary p-7 pt-3">
@@ -73,7 +78,7 @@ const Driver = () => {
         cns={
           "w-full !border-double border-secondary border-2 p-4 rounded-lg shadow-md shadow-secondary drop-shadow-[0px_3px_10px_rgba(82,109,130,1)]"
         }
-        name={"Drivers"}
+        name={"Maintenance Records"}
         refetch={refetch}
         deleteData={deleteData}
         Update={Update}
@@ -82,4 +87,4 @@ const Driver = () => {
   );
 };
 
-export default Driver;
+export default Customer;

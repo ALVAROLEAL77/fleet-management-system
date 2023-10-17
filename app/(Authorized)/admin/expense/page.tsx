@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { PiPersonFill, PiPlusSquareDuotone } from "react-icons/pi";
 import { Button } from "../_components/ui/button";
 import Create from "./Create";
-import Update from "./Update";
 
 const Driver = () => {
   const path = usePathname();
@@ -16,20 +15,20 @@ const Driver = () => {
       header: "ID",
     },
     {
-      accessorKey: "firstName",
-      header: "First Name",
+      accessorKey: "expenseType",
+      header: "Expense Type",
     },
     {
-      accessorKey: "lastName",
-      header: "Last Name",
+      accessorKey: "expenseDate",
+      header: "Expense Date",
     },
     {
-      accessorKey: "contactEmail",
-      header: "Email",
+      accessorKey: "amount",
+      header: "Amount",
     },
     {
-      accessorKey: "driverStatus",
-      header: "Driver Status",
+      accessorKey: "description",
+      header: "Description",
     },
     {
       accessorKey: "actions",
@@ -37,14 +36,14 @@ const Driver = () => {
     },
   ]);
   const refetch = () => {
-    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/driver")
+    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/expense")
       .then((res) => res.json())
       .then((res) => {
         setData(res);
       });
   };
   useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/driver", {
+    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/expense", {
       next: { revalidate: 0 },
     })
       .then((res) => res.json())
@@ -54,7 +53,7 @@ const Driver = () => {
   }, []);
   console.log(data);
   function deleteData(id) {
-    return fetch(process.env.NEXT_PUBLIC_APP_URL + `api/driver/${id}`, {
+    return fetch(process.env.NEXT_PUBLIC_APP_URL + `api/expense/${id}`, {
       method: "delete",
       headers: { "Content-Types": "application/json" },
     }).then();
@@ -73,7 +72,7 @@ const Driver = () => {
         cns={
           "w-full !border-double border-secondary border-2 p-4 rounded-lg shadow-md shadow-secondary drop-shadow-[0px_3px_10px_rgba(82,109,130,1)]"
         }
-        name={"Drivers"}
+        name={"Expenses"}
         refetch={refetch}
         deleteData={deleteData}
         Update={Update}

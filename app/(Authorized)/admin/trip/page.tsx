@@ -5,9 +5,8 @@ import { useEffect, useState } from "react";
 import { PiPersonFill, PiPlusSquareDuotone } from "react-icons/pi";
 import { Button } from "../_components/ui/button";
 import Create from "./Create";
-import Update from "./Update";
 
-const Driver = () => {
+const Customer = () => {
   const path = usePathname();
   const [data, setData] = useState([]);
   const [columns, setCols] = useState([
@@ -16,20 +15,45 @@ const Driver = () => {
       header: "ID",
     },
     {
-      accessorKey: "firstName",
-      header: "First Name",
+      accessorKey: "vehicleId",
+      header: "Vehicle ID",
     },
     {
-      accessorKey: "lastName",
-      header: "Last Name",
+      accessorKey: "driverId",
+      header: "Driver ID",
+    },
+
+    {
+      accessorKey: "customerId",
+      header: "Customer ID",
     },
     {
-      accessorKey: "contactEmail",
-      header: "Email",
+      accessorKey: "startLocationLatitude",
+      header: "Start Location Latitude",
     },
     {
-      accessorKey: "driverStatus",
-      header: "Driver Status",
+      accessorKey: "startLocationLongitude",
+      header: "Start Location Longitude",
+    },
+    {
+      accessorKey: "endLocationLatitude",
+      header: "End Location Latitude",
+    },
+    {
+      accessorKey: "startTime",
+      header: "Start Time",
+    },
+    {
+      accessorKey: "endTime",
+      header: "End Time",
+    },
+    {
+      accessorKey: "distanceTraveled",
+      header: "Distance Traveled",
+    },
+    {
+      accessorKey: "tripStatus",
+      header: "Trip Status",
     },
     {
       accessorKey: "actions",
@@ -37,14 +61,14 @@ const Driver = () => {
     },
   ]);
   const refetch = () => {
-    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/driver")
+    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/trip")
       .then((res) => res.json())
       .then((res) => {
         setData(res);
       });
   };
   useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/driver", {
+    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/trip", {
       next: { revalidate: 0 },
     })
       .then((res) => res.json())
@@ -54,7 +78,7 @@ const Driver = () => {
   }, []);
   console.log(data);
   function deleteData(id) {
-    return fetch(process.env.NEXT_PUBLIC_APP_URL + `api/driver/${id}`, {
+    return fetch(process.env.NEXT_PUBLIC_APP_URL + `api/trip/${id}`, {
       method: "delete",
       headers: { "Content-Types": "application/json" },
     }).then();
@@ -73,7 +97,7 @@ const Driver = () => {
         cns={
           "w-full !border-double border-secondary border-2 p-4 rounded-lg shadow-md shadow-secondary drop-shadow-[0px_3px_10px_rgba(82,109,130,1)]"
         }
-        name={"Drivers"}
+        name={"Trips"}
         refetch={refetch}
         deleteData={deleteData}
         Update={Update}
@@ -82,4 +106,4 @@ const Driver = () => {
   );
 };
 
-export default Driver;
+export default Customer;

@@ -19,12 +19,18 @@ module.exports = {
         type: Sequelize.STRING,
       },
       vehicleLicensePlate: {
+        allowNull: false,
+        unique: true,
         type: Sequelize.STRING,
       },
       currentLocation: {
+        allowNull: false,
+        unique: true,
         type: Sequelize.STRING,
       },
       status: {
+        allowNull: false,
+        unique: true,
         type: Sequelize.STRING,
       },
       createdAt: {

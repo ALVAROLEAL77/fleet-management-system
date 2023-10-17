@@ -5,7 +5,27 @@ import { useEffect, useState } from "react";
 import { PiPersonFill, PiPlusSquareDuotone } from "react-icons/pi";
 import { Button } from "../_components/ui/button";
 import Create from "./Create";
+import Link from "next/link";
 import Update from "./Update";
+
+const columns = [
+  {
+    accessorKey: "name",
+    header: "Name",
+  },
+  {
+    accessorKey: "age",
+    header: "Age",
+  },
+  {
+    accessorKey: "email",
+    header: "Email",
+  },
+  {
+    accessorKey: "actions",
+    header: "Actions",
+  },
+];
 
 const Driver = () => {
   const path = usePathname();
@@ -24,27 +44,24 @@ const Driver = () => {
       header: "Last Name",
     },
     {
-      accessorKey: "contactEmail",
+      accessorKey: "email",
       header: "Email",
     },
-    {
-      accessorKey: "driverStatus",
-      header: "Driver Status",
-    },
+
     {
       accessorKey: "actions",
       header: "Actions",
     },
   ]);
   const refetch = () => {
-    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/driver")
+    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/user")
       .then((res) => res.json())
       .then((res) => {
         setData(res);
       });
   };
   useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/driver", {
+    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/user", {
       next: { revalidate: 0 },
     })
       .then((res) => res.json())
@@ -54,7 +71,7 @@ const Driver = () => {
   }, []);
   console.log(data);
   function deleteData(id) {
-    return fetch(process.env.NEXT_PUBLIC_APP_URL + `api/driver/${id}`, {
+    return fetch(process.env.NEXT_PUBLIC_APP_URL + `api/user/${id}`, {
       method: "delete",
       headers: { "Content-Types": "application/json" },
     }).then();
@@ -62,8 +79,9 @@ const Driver = () => {
   return (
     <div className="w-full rounded-2xl border-double border-secondary border-2 backdrop-blur-3xl shadow-md shadow-secondary p-7 pt-3">
       <div className="flex justify-between w-full">
-        <h1 className="font-rock text-secondary tracking-widest space-x-10 uppercase m-3">
-          {path.split("/").join(" > ").substring(2)}
+        <h1 className="font-rock text-secondary tracking-widest space-x-10 uppercase m-3 w-fit">
+          {path.split("/").join(" > ").substring(2)}|{" "}
+          <Link href={"/admin/userrole"}>User Roles</Link>
         </h1>
         <Create refetch={refetch} />
       </div>
@@ -73,7 +91,7 @@ const Driver = () => {
         cns={
           "w-full !border-double border-secondary border-2 p-4 rounded-lg shadow-md shadow-secondary drop-shadow-[0px_3px_10px_rgba(82,109,130,1)]"
         }
-        name={"Drivers"}
+        name={"Users"}
         refetch={refetch}
         deleteData={deleteData}
         Update={Update}

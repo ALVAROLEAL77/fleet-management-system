@@ -9,6 +9,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.UUID,
       },
+      vehicleId: {
+        allowNull: true,
+        type: Sequelize.UUID,
+        references: { model: "Vehicles", key: "id" },
+      },
       expenseType: {
         type: Sequelize.STRING,
       },

@@ -10,12 +10,12 @@ const containerStyle = {
 
 function DashMap() {
   const [current, setCurrent] = useState({ lat: 0, lng: 0 });
-  navigator.geolocation.getCurrentPosition(function (position) {
-    setCurrent({
-      lat: position.coords.latitude,
-      lng: position.coords.longitude,
-    });
-  });
+  // navigator.geolocation.getCurrentPosition(function (position) {
+  //   setCurrent({
+  //     lat: position.coords.latitude,
+  //     lng: position.coords.longitude,
+  //   });
+  // });
   return (
     <LoadScript googleMapsApiKey={"AIzaSyD4KpQYj67dCHVTV_VDov3hUXX6WcYCeg4"}>
       <GoogleMap

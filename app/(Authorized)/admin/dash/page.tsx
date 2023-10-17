@@ -60,10 +60,10 @@ const DashBody = () => {
               minute: "numeric",
             })}
           </h4>
-          <h1 className="md:text-5xl text-6xl drop-shadow-lg drop-shadow-primary font-extrabold font-rock tracking-widest uppercase bg-secondary text-transparent bg-clip-text break-words">
+          <h1 className="md:text-5xl text-6xl  drop-shadow-primary font-extrabold font-rock tracking-widest uppercase bg-secondary text-transparent bg-clip-text break-words drop-shadow-[0px_3px_10px_rgba(82,109,130,1)]">
             Dashboard
           </h1>
-          <h1 className="md:text-2xl text-3xl font-bold font-rock tracking-wide pt-1 capitalize text-primary d">
+          <h1 className="md:text-2xl text-3xl font-bold font-neon tracking-widest pt-1 capitalize text-primary drop-shadow-[0px_3px_3px_rgba(255,255,255,1)]">
             Welcome Back,
             {/* {session?.user?.name} */}
           </h1>
