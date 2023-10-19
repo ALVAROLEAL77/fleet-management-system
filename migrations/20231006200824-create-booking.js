@@ -9,6 +9,13 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.UUID,
       },
+      customerId: {
+        type: Sequelize.UUID,
+        references: { model: "Customers", key: "id" },
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE",
+      },
+
       bookingDate: {
         type: Sequelize.DATE,
       },

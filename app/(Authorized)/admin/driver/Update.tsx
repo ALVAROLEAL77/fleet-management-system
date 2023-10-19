@@ -20,6 +20,8 @@ import {
 } from "react-icons/pi";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { format } from "date-fns";
+
 const Update = ({ id, refetch }) => {
   const [value, setValue] = useState();
   const get = () => {
@@ -34,6 +36,9 @@ const Update = ({ id, refetch }) => {
 
   const initialValues = value && {
     ...value,
+    licenseExpiryDate: value
+      ? format(new Date(value.licenseExpiryDate), "yyyy-MM-dd'T'HH:mm")
+      : "",
   };
   const onSubmit = (value, id) => {
     fetch(process.env.NEXT_PUBLIC_APP_URL + `api/driver/${id}`, {
@@ -157,7 +162,7 @@ const Update = ({ id, refetch }) => {
                         <label>License Expiry Date</label>
                         <Field
                           className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
-                          type="date"
+                          type="datetime-local"
                           name="licenseExpiryDate"
                         />
                         <ErrorMessage

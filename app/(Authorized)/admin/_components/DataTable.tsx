@@ -36,7 +36,7 @@ import {
 } from "react-icons/pi";
 import { useState } from "react";
 
-export type DataTableProps<Data> = {
+type DataTableProps<Data> = {
   data: Data[];
   columns: ColumnDef<Data>[];
   deleteData: (id: string) => void;
@@ -45,7 +45,7 @@ export type DataTableProps<Data> = {
   refetch?: () => void;
 };
 
-export function DataTable<Data>({
+export default function DataTable<Data>({
   data,
   columns,
   cns,
@@ -150,8 +150,14 @@ export function DataTable<Data>({
                         <TableCell key={"actions"} className="flex py-10">
                           <PiTrashSimpleDuotone
                             onClick={() => {
-                              refetch();
-                              deleteData(row.getValue("id"));
+                              if (
+                                confirm(
+                                  "Are You Sure You Want to Delete This Item?"
+                                )
+                              ) {
+                                refetch();
+                                deleteData(row.getValue("id"));
+                              }
                             }}
                             className="text-red-800 text-2xl cursor-pointer"
                           />
@@ -211,5 +217,3 @@ export function DataTable<Data>({
     </div>
   );
 }
-
-export default DataTable;

@@ -6,7 +6,14 @@ export async function GET(
 ) {
   try {
     const { id } = await params;
-    const result = await models.Trip.findOne({ where: { id } });
+    const result = await models.Trip.findOne({
+      where: { id },
+      include: [
+        { model: models.Vehicle },
+        { model: models.Booking },
+        { model: models.Driver },
+      ],
+    });
     return NextResponse.json(result);
   } catch (e) {
     return NextResponse.json({ message: e.message, status: 400 });

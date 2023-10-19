@@ -27,7 +27,7 @@ const Create = ({ refetch }) => {
       headers: { "Content-Types": "application/json" },
     })
       .then((res) => res.json())
-      .then((res) => toast.success(res.message));
+      .then((res) => toast.success(res));
   };
   return (
     <Dialog onOpenChange={refetch}>
@@ -47,7 +47,6 @@ const Create = ({ refetch }) => {
 
             <Formik
               initialValues={{
-                driverID: "",
                 firstName: "",
                 lastName: "",
                 phone: "",
@@ -59,8 +58,8 @@ const Create = ({ refetch }) => {
               validationSchema={Yup.object().shape({
                 firstName: Yup.string().required("First Name is required"),
                 lastName: Yup.string().required("Last Name is required"),
-                contactPhone: Yup.string().required("Phone is required"),
-                contactEmail: Yup.string()
+                phone: Yup.string().required("Phone is required"),
+                email: Yup.string()
                   .email("Invalid email address")
                   .required("Email is required"),
                 licenseNumber: Yup.string().required(
@@ -74,9 +73,6 @@ const Create = ({ refetch }) => {
                 ),
               })}
               onSubmit={(values) => {
-                values = {
-                  ...values,
-                };
                 onSubmit(values);
               }}
             >
@@ -113,7 +109,7 @@ const Create = ({ refetch }) => {
                     <Field
                       className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
                       type="text"
-                      name="contactPhonecontactPhone"
+                      name="phone"
                     />
                     <ErrorMessage
                       className="text-red-900 text-[10px]"
@@ -125,12 +121,12 @@ const Create = ({ refetch }) => {
                     <label>Email</label>
                     <Field
                       className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
-                      type="contactPhone"
+                      type="phone"
                       name="email"
                     />
                     <ErrorMessage
                       className="text-red-900 text-[10px]"
-                      name="contactEmail"
+                      name="email"
                       component="div"
                     />
                   </div>
@@ -151,7 +147,7 @@ const Create = ({ refetch }) => {
                     <label>License Expiry Date</label>
                     <Field
                       className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
-                      type="date"
+                      type="datetime-local"
                       name="licenseExpiryDate"
                     />
                     <ErrorMessage

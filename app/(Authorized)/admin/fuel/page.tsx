@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { PiPersonFill, PiPlusSquareDuotone } from "react-icons/pi";
 import { Button } from "../_components/ui/button";
 import Create from "./Create";
+import Update from "./Update";
 
 const Customer = () => {
   const path = usePathname();
@@ -77,6 +78,7 @@ const Customer = () => {
         name={"Fuel Records"}
         refetch={refetch}
         deleteData={deleteData}
+        Update={Update}
       />
     </div>
   );

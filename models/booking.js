@@ -8,8 +8,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Booking.belongsTo(models.Customer);
-      Booking.belongsTo(models.Trip);
+      Booking.hasOne(models.Trip, { foreignKey: "bookingId" });
+      Booking.belongsTo(models.Customer, { foreignKey: "customerId" });
     }
   }
   Booking.init(
@@ -19,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
       endLocation: DataTypes.STRING,
       tripPurpose: DataTypes.STRING,
       status: DataTypes.STRING,
+      customerId: DataTypes.UUID,
     },
     {
       sequelize,

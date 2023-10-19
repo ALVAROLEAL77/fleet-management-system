@@ -12,6 +12,8 @@ module.exports = {
       vehicleId: {
         type: Sequelize.UUID,
         references: { model: "Vehicles", key: "id" },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
       },
       maintenanceType: {
         type: Sequelize.STRING,

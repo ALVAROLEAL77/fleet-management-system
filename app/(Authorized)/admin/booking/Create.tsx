@@ -20,7 +20,29 @@ import {
 } from "react-icons/pi";
 import { toast } from "react-toastify";
 import { BiSolidBookContent } from "react-icons/bi";
+import { useEffect, useState } from "react";
+import Multiselect from "multiselect-react-dropdown";
 const Create = ({ refetch }) => {
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [options, setOptions] = useState([]);
+
+  useEffect(() => {
+    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/customer")
+      .then((res) => res.json())
+      .then((res) => {
+        setOptions(
+          res.map((customer) => ({
+            value: customer.id,
+            label: `${customer.contactPerson} - ${customer.customerName}`,
+
+            ...customer,
+          }))
+        );
+      })
+      .catch((error) => {
+        console.error("Error fetching customer data:", error);
+      });
+  }, []);
   const onSubmit = (value) => {
     fetch(process.env.NEXT_PUBLIC_APP_URL + `api/booking`, {
       method: "post",
@@ -48,8 +70,6 @@ const Create = ({ refetch }) => {
 
             <Formik
               initialValues={{
-                CustomerId: "",
-                TripId: "",
                 bookingDate: "",
                 startLocationLatitude: "",
                 startLocationLongitude: "",
@@ -58,7 +78,6 @@ const Create = ({ refetch }) => {
                 status: "",
               }}
               validationSchema={Yup.object().shape({
-                CustomerId: Yup.string().required("Customer ID is required"),
                 bookingDate: Yup.date().required("Booking Date is required"),
                 startLocationLatitude: Yup.number().required(
                   "Start Location Latitude is required"
@@ -76,45 +95,77 @@ const Create = ({ refetch }) => {
                 status: Yup.string().required("Status is required"),
               })}
               onSubmit={(values) => {
-                values = {
-                  ...values,
-                };
+                values["customerId"] = selectedOptions[0].id;
+                values["startLocation"] =
+                  values["startLocationLatitude"] +
+                  " " +
+                  values["startLocationLongitude"];
+                values["endLocation"] =
+                  values["endLocationLatitude"] +
+                  " " +
+                  values["endLocationLongitude"];
                 onSubmit(values);
               }}
             >
               <Form className="flex flex-col justify-center items-center">
                 <div className="flex flex-col justify-start items-start flex-wrap h-[320px]">
                   <div className="m-3 h-20 w-48">
-                    <label>Customer ID</label>
-                    <Field
-                      className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
-                      type="text"
-                      name="CustomerId"
+                    <label>Customer</label>
+                    <Multiselect
+                      options={options}
+                      selectedValues={selectedOptions}
+                      onSelect={setSelectedOptions}
+                      onRemove={setSelectedOptions}
+                      placeholder="Select Customer"
+                      displayValue="label"
+                      className="font-rock font-thin tracking-wider"
+                      selectionLimit={1}
+                      style={{
+                        multiselectContainer: {
+                          borderRadius: "2px",
+                          color: "#526D82",
+                        },
+                        chips: {
+                          backgroundColor: "#526D82",
+                          fontSize: "0.5em",
+                          letterSpacing: "3px",
+                        },
+                        searchBox: {
+                          borderRadius: "7px",
+                          border: "1.5px #526D82 double",
+                          letterSpacing: "10px",
+                          padding: "7px",
+                        },
+                        option: {
+                          borderRadius: "12px",
+                          border: "2px #000 double",
+                          backgroundColor: "#526D82",
+                          color: "#000",
+                        },
+                        highlightOption: {
+                          backgroundColor: "#000",
+                        },
+                        notFound: {
+                          fontSize: "16px",
+                          borderRadius: "12px",
+                          border: "2px #526D82 double",
+                          backgroundColor: "#000",
+                        },
+                        optionContainer: {
+                          backgroundColor: "#000",
+                        },
+                      }}
                     />
-                    <ErrorMessage
-                      className="text-red-900 text-[10px]"
-                      name="CustomerId"
-                      component="div"
-                    />
+                    <p className="text-red-900 text-[10px]">
+                      {!selectedOptions[0] && "Select a Customer"}
+                    </p>
                   </div>
-                  <div className="m-3 h-20 w-48">
-                    <label>Trip ID</label>
-                    <Field
-                      className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
-                      type="text"
-                      name="CustomerId"
-                    />
-                    <ErrorMessage
-                      className="text-red-900 text-[10px]"
-                      name="CustomerId"
-                      component="div"
-                    />
-                  </div>
+
                   <div className="m-3 h-20 w-48">
                     <label>Booking Date</label>
                     <Field
                       className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
-                      type="date"
+                      type="datetime-local"
                       name="bookingDate"
                     />
                     <ErrorMessage

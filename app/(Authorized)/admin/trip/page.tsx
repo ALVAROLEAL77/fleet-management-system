@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { PiPersonFill, PiPlusSquareDuotone } from "react-icons/pi";
 import { Button } from "../_components/ui/button";
 import Create from "./Create";
+import Update from "./Update";
 
 const Customer = () => {
   const path = usePathname();
@@ -14,19 +15,7 @@ const Customer = () => {
       accessorKey: "id",
       header: "ID",
     },
-    {
-      accessorKey: "vehicleId",
-      header: "Vehicle ID",
-    },
-    {
-      accessorKey: "driverId",
-      header: "Driver ID",
-    },
 
-    {
-      accessorKey: "customerId",
-      header: "Customer ID",
-    },
     {
       accessorKey: "startLocationLatitude",
       header: "Start Location Latitude",
@@ -38,6 +27,10 @@ const Customer = () => {
     {
       accessorKey: "endLocationLatitude",
       header: "End Location Latitude",
+    },
+    {
+      accessorKey: "endLocationLongitude",
+      header: "End Location Longitude",
     },
     {
       accessorKey: "startTime",

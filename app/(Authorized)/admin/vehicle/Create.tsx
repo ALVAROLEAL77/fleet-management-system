@@ -71,9 +71,9 @@ const Create = ({ refetch }) => {
                 values = {
                   ...values,
                   ["currentLocation"]:
-                    values.currentLocationLongitude +
+                    values.currentLocationLatitude +
                     " " +
-                    values.currentLocationLatitude,
+                    values.currentLocationLongitude,
                 };
                 onSubmit(values);
               }}

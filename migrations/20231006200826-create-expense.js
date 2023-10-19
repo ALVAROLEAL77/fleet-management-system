@@ -12,7 +12,12 @@ module.exports = {
       vehicleId: {
         allowNull: true,
         type: Sequelize.UUID,
-        references: { model: "Vehicles", key: "id" },
+        references: {
+          model: "Vehicles",
+          key: "id",
+        },
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE",
       },
       expenseType: {
         type: Sequelize.STRING,

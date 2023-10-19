@@ -9,13 +9,25 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.UUID,
       },
+      vehicleId: {
+        type: Sequelize.UUID,
+        references: { model: "Vehicles", key: "id" },
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE",
+      },
+      bookingId: {
+        type: Sequelize.UUID,
+        references: { model: "Bookings", key: "id" },
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE",
+      },
+      driverId: {
+        type: Sequelize.UUID,
+        references: { model: "Drivers", key: "id" },
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE",
+      },
 
-      startLocation: {
-        type: Sequelize.STRING,
-      },
-      endLocation: {
-        type: Sequelize.STRING,
-      },
       startTime: {
         type: Sequelize.DATE,
       },
