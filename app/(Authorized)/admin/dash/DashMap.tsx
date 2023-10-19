@@ -6,8 +6,8 @@ import {
   Marker,
   useLoadScript,
 } from "@react-google-maps/api";
-require("dotenv").config();
-
+import dt from "dotenv";
+dt.config();
 const containerStyle = {
   width: "100%",
   height: "300px",
@@ -49,9 +49,9 @@ function DashMap() {
   }, []);
 
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "AIzaSyD4KpQYj67dCHVTV_VDov3hUXX6WcYCeg4",
+    googleMapsApiKey: `${process.env.NEXT_PUBLIC_GMAPS_API}`,
   });
-
+  console.log(process.env.NEXT_PUBLIC_GMAPS_API);
   useEffect(() => {
     if ("geolocation" in window.navigator) {
       window.navigator.geolocation.getCurrentPosition(function (position) {

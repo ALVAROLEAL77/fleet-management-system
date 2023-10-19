@@ -9,8 +9,8 @@ import {
   MarkerF,
   useLoadScript,
 } from "@react-google-maps/api";
-require("dotenv").config();
-
+import dt from "dotenv";
+dt.config();
 const containerStyle = {
   width: "100%",
   height: "500px",
@@ -53,7 +53,7 @@ const Track = () => {
   }, []);
 
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "AIzaSyD4KpQYj67dCHVTV_VDov3hUXX6WcYCeg4",
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GMAPS_API,
   });
   return (
     <div className="w-full rounded-2xl border-double border-secondary border-2 backdrop-blur-3xl shadow-md shadow-secondary p-7 pt-3">
