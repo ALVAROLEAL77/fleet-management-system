@@ -55,20 +55,6 @@ const Track = () => {
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyD4KpQYj67dCHVTV_VDov3hUXX6WcYCeg4",
   });
-
-  useEffect(() => {
-    if (isLoaded && selectedOptions.length > 0) {
-      const selectedVehicle = selectedOptions[0];
-      const lat = Number(selectedVehicle.currentLocation?.split(" ")[0]);
-      const lng = Number(selectedVehicle.currentLocation?.split(" ")[1]);
-      const center = { lat, lng };
-      vehicles.forEach((vehicle) => {
-        vehicle.isSelected = vehicle.id === selectedVehicle.id;
-      });
-      setVehicles([...vehicles]);
-    }
-  }, [selectedOptions]);
-
   return (
     <div className="w-full rounded-2xl border-double border-secondary border-2 backdrop-blur-3xl shadow-md shadow-secondary p-7 pt-3">
       <div className="flex justify-between w-full">

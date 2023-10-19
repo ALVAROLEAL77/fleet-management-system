@@ -4,7 +4,9 @@ import { v4 } from "uuid";
 import models from "../../../models";
 export async function GET() {
   try {
-    const result = await models.FuelingRecord.findAll();
+    const result = await models.FuelingRecord.findAll({
+      include: { model: models.Vehicle },
+    });
     return NextResponse.json(result);
   } catch (e) {
     return NextResponse.json({ message: e.message, status: 400 });

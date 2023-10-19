@@ -18,19 +18,19 @@ import { ImUserTie } from "react-icons/im";
 import { AiFillCarryOut } from "react-icons/ai";
 import { BsFillFuelPumpFill } from "react-icons/bs";
 // @ts-ignore
-const SideBar = ({ flat, setflat }) => {
+const SideBar = ({}) => {
   const [drops, setDrops] = useState({ employee: false, job: false });
   const [hover, setHover] = useState({});
   return (
     <div
-      className={` transition-all font-poppins tracking-widest duration-300 uppercase ml-3 bg-transparent z-50 ${
+      className={` font-poppins tracking-widest uppercase ml-3 bg-transparent z-50 ${
         // flat ? "w-60" :
         "w-14"
       }`}
-      onMouseOver={() => setflat(true)}
-      onMouseOut={() => setflat(false)}
     >
-      <div className={`h-screen flex flex-col justify-center items-center`}>
+      <div
+        className={`h-screen flex flex-col justify-center items-center drop-shadow-[0px_3px_10px_rgba(82,109,130,1)]`}
+      >
         <ul
           className={` flex flex-col w-full h-fit items-start border-[2px] border-double border-secondary rounded-xl py-3 shadow-md shadow-secondary bg-transparent backdrop-blur-2xl`}
         >
