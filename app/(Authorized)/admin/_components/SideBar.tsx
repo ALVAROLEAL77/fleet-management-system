@@ -170,40 +170,7 @@ const SideBar = ({}) => {
               </p>
             </Link>
           </li>
-          <li
-            className="w-full"
-            onMouseOver={() =>
-              setHover((prev) => {
-                return { ...prev, trip: true };
-              })
-            }
-            onMouseOut={() =>
-              setHover((prev) => {
-                return { ...prev, trip: false };
-              })
-            }
-          >
-            <Link
-              href={"/admin/trip"}
-              className={` flex items-center justify-start w-full p-3 px-4  ${
-                hover.trip ? "text-primary" : "text-secondary"
-              }`}
-            >
-              <AiFillCarryOut
-                className={`text-2xl drop-shadow-3xl duration-500 ${
-                  hover.trip && "scale-125"
-                }`}
-              />
 
-              <p
-                className={`font-thin tracking-widest whitespace-nowrap font-rock text-sm duration-500 fixed z-50 overflow-hidden ${
-                  hover.trip ? " translate-x-14 w-fit" : "translate-x-10 w-0"
-                }`}
-              >
-                Trips
-              </p>
-            </Link>
-          </li>
           <li
             className="w-full"
             onMouseOver={() =>
@@ -235,6 +202,40 @@ const SideBar = ({}) => {
                 }`}
               >
                 Booking
+              </p>
+            </Link>
+          </li>
+          <li
+            className="w-full"
+            onMouseOver={() =>
+              setHover((prev) => {
+                return { ...prev, trip: true };
+              })
+            }
+            onMouseOut={() =>
+              setHover((prev) => {
+                return { ...prev, trip: false };
+              })
+            }
+          >
+            <Link
+              href={"/admin/trip"}
+              className={` flex items-center justify-start w-full p-3 px-4  ${
+                hover.trip ? "text-primary" : "text-secondary"
+              }`}
+            >
+              <AiFillCarryOut
+                className={`text-2xl drop-shadow-3xl duration-500 ${
+                  hover.trip && "scale-125"
+                }`}
+              />
+
+              <p
+                className={`font-thin tracking-widest whitespace-nowrap font-rock text-sm duration-500 fixed z-50 overflow-hidden ${
+                  hover.trip ? " translate-x-14 w-fit" : "translate-x-10 w-0"
+                }`}
+              >
+                Trips
               </p>
             </Link>
           </li>

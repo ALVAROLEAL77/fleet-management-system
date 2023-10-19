@@ -49,10 +49,14 @@ const Update = ({ id, refetch }) => {
       .then((res) => res.json())
       .then((res) => toast.success(res.message));
   };
+  const oC = () => {
+    refetch();
+    get();
+  };
   return (
     <>
-      <Dialog onOpenChange={refetch}>
-        <DialogTrigger onClick={get}>
+      <Dialog onOpenChange={oC}>
+        <DialogTrigger>
           <PiRecycleDuotone className="text-green-800  text-2xl cursor-pointer" />
         </DialogTrigger>
         {value && (

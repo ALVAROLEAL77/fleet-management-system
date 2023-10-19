@@ -155,8 +155,8 @@ export default function DataTable<Data>({
                                   "Are You Sure You Want to Delete This Item?"
                                 )
                               ) {
-                                refetch();
                                 deleteData(row.getValue("id"));
+                                refetch();
                               }
                             }}
                             className="text-red-800 text-2xl cursor-pointer"

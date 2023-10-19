@@ -49,8 +49,8 @@ const Create = ({ refetch }) => {
               initialValues={{
                 firstName: "",
                 lastName: "",
-                phone: "",
-                email: "",
+                contactPhone: "",
+                contactEmail: "",
                 licenseNumber: "",
                 licenseExpiryDate: "",
                 driverStatus: "",
@@ -58,8 +58,8 @@ const Create = ({ refetch }) => {
               validationSchema={Yup.object().shape({
                 firstName: Yup.string().required("First Name is required"),
                 lastName: Yup.string().required("Last Name is required"),
-                phone: Yup.string().required("Phone is required"),
-                email: Yup.string()
+                contactPhone: Yup.string().required("Phone is required"),
+                contactEmail: Yup.string()
                   .email("Invalid email address")
                   .required("Email is required"),
                 licenseNumber: Yup.string().required(
@@ -109,11 +109,11 @@ const Create = ({ refetch }) => {
                     <Field
                       className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
                       type="text"
-                      name="phone"
+                      name="contactPhone"
                     />
                     <ErrorMessage
                       className="text-red-900 text-[10px]"
-                      name="phone"
+                      name="contactPhone"
                       component="div"
                     />
                   </div>
@@ -122,11 +122,11 @@ const Create = ({ refetch }) => {
                     <Field
                       className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
                       type="phone"
-                      name="email"
+                      name="contactEmail"
                     />
                     <ErrorMessage
                       className="text-red-900 text-[10px]"
-                      name="email"
+                      name="contactEmail"
                       component="div"
                     />
                   </div>
