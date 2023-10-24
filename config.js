@@ -19,7 +19,7 @@ module.exports = {
   },
   production: {
     username: "fms_9xez_user",
-    password: "acaI3DV3SpzJW0cmOpoCoZyzILkyQzpk",
+    password: "https://dashboard.render.com/d/dpg-ckrv4m10at9c73buhhd0-a",
     database: process.env.DB_NAME,
     host: ["dpg-ckrv4m10at9c73buhhd0-a"],
     dialect: "postgres",
