@@ -18,10 +18,10 @@ module.exports = {
     dialectModule: pg,
   },
   production: {
-    username: process.env.DB_USER,
-    password: process.env.DB_PASS,
+    username: "fms_9xez_user",
+    password: "acaI3DV3SpzJW0cmOpoCoZyzILkyQzpk",
     database: process.env.DB_NAME,
-    host: [process.env.DB_HOST],
+    host: ["dpg-ckrv4m10at9c73buhhd0-a"],
     dialect: "postgres",
     dialectModule: pg,
   },
