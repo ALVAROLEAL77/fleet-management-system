@@ -7,7 +7,7 @@ import { SessionProvider } from "next-auth/react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import Script from "next/script";
-
+require("dotenv").config();
 const inter = Inter({ subsets: ["latin"] });
 const contextClass = {
   success: "bg-primary text-green-600",
@@ -28,6 +28,10 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <Script src="http://localhost:8097"></Script>
+        <Script
+          src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GMAPS_API}&libraries=places&callback=initMap`}
+          async
+        ></Script>
       </head>
       <body className={`${inter.className}`}>
         <ToastContainer

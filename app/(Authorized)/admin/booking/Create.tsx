@@ -22,7 +22,10 @@ import { toast } from "react-toastify";
 import { BiSolidBookContent } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import Multiselect from "multiselect-react-dropdown";
+import Search from "../_components/search";
 const Create = ({ refetch }) => {
+  const [selectedStart, setSelectedStart] = useState();
+  const [selectedEnd, setSelectedEnd] = useState();
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [options, setOptions] = useState([]);
 
@@ -60,7 +63,7 @@ const Create = ({ refetch }) => {
           <PiPlusSquareDuotone className="text-lg text-secondary" />
         </Button>
       </DialogTrigger>
-      <DialogContent className="min-w-[850px] drop-shadow-2xl">
+      <DialogContent className="min-w-[650px] drop-shadow-2xl">
         <DialogHeader>
           <DialogTitle className="font-rock text-primary">
             Create Booking
@@ -71,201 +74,176 @@ const Create = ({ refetch }) => {
             <Formik
               initialValues={{
                 bookingDate: "",
-                startLocationLatitude: "",
-                startLocationLongitude: "",
-                endLocationLatitude: "",
-                endLocationLongitude: "",
+                startLocationName: "",
+                endLocationName: "",
                 status: "",
+                tripPurpose: "",
               }}
               validationSchema={Yup.object().shape({
                 bookingDate: Yup.date().required("Booking Date is required"),
-                startLocationLatitude: Yup.number().required(
-                  "Start Location Latitude is required"
+                startLocationName: Yup.string().required(
+                  "Start Location is required"
                 ),
-                startLocationLongitude: Yup.number().required(
-                  "Start Location Longitude is required"
-                ),
-                endLocationLatitude: Yup.number().required(
-                  "End Location Latitude is required"
-                ),
-                endLocationLongitude: Yup.number().required(
-                  "End Location Longitude is required"
+                endLocationName: Yup.string().required(
+                  "End Location is required"
                 ),
                 tripPurpose: Yup.string().required("Trip Purpose is required"),
                 status: Yup.string().required("Status is required"),
               })}
               onSubmit={(values) => {
-                values["customerId"] = selectedOptions[0].id;
                 values["startLocation"] =
-                  values["startLocationLatitude"] +
-                  " " +
-                  values["startLocationLongitude"];
+                  selectedStart !== undefined &&
+                  selectedStart.lat + ", " + selectedStart.lng;
                 values["endLocation"] =
-                  values["endLocationLatitude"] +
-                  " " +
-                  values["endLocationLongitude"];
+                  selectedEnd !== undefined &&
+                  selectedEnd.lat + ", " + selectedEnd.lng;
+                values["customerId"] = selectedOptions[0].id;
                 onSubmit(values);
               }}
             >
-              <Form className="flex flex-col justify-center items-center">
-                <div className="flex flex-col justify-start items-start flex-wrap h-[320px]">
-                  <div className="m-3 h-20 w-48">
-                    <label>Customer</label>
-                    <Multiselect
-                      options={options}
-                      selectedValues={selectedOptions}
-                      onSelect={setSelectedOptions}
-                      onRemove={setSelectedOptions}
-                      placeholder="Select Customer"
-                      displayValue="label"
-                      className="font-rock font-thin tracking-wider"
-                      selectionLimit={1}
-                      style={{
-                        multiselectContainer: {
-                          borderRadius: "2px",
-                          color: "#526D82",
-                        },
-                        chips: {
-                          backgroundColor: "#526D82",
-                          fontSize: "0.5em",
-                          letterSpacing: "3px",
-                        },
-                        searchBox: {
-                          borderRadius: "7px",
-                          border: "1.5px #526D82 double",
-                          letterSpacing: "10px",
-                          padding: "7px",
-                        },
-                        option: {
-                          borderRadius: "12px",
-                          border: "2px #000 double",
-                          backgroundColor: "#526D82",
-                          color: "#000",
-                        },
-                        highlightOption: {
-                          backgroundColor: "#000",
-                        },
-                        notFound: {
-                          fontSize: "16px",
-                          borderRadius: "12px",
-                          border: "2px #526D82 double",
-                          backgroundColor: "#000",
-                        },
-                        optionContainer: {
-                          backgroundColor: "#000",
-                        },
-                      }}
-                    />
-                    <p className="text-red-900 text-[10px]">
-                      {!selectedOptions[0] && "Select a Customer"}
-                    </p>
-                  </div>
+              {({
+                // values,
+                // errors,
+                // touched,
+                // handleChange,
+                // handleBlur,
+                setFieldValue,
+              }) => (
+                <Form className="flex flex-col justify-center items-center">
+                  <div className="flex flex-col justify-start items-start flex-wrap h-[320px]">
+                    <div className="m-3 h-20 w-48">
+                      <label>Customer</label>
+                      <Multiselect
+                        options={options}
+                        selectedValues={selectedOptions}
+                        onSelect={setSelectedOptions}
+                        onRemove={setSelectedOptions}
+                        placeholder="Select Customer"
+                        displayValue="label"
+                        className="font-rock font-thin tracking-wider"
+                        selectionLimit={1}
+                        style={{
+                          multiselectContainer: {
+                            borderRadius: "2px",
+                            color: "#526D82",
+                          },
+                          chips: {
+                            backgroundColor: "#526D82",
+                            fontSize: "0.5em",
+                            letterSpacing: "3px",
+                          },
+                          searchBox: {
+                            borderRadius: "7px",
+                            border: "1.5px #526D82 double",
+                            letterSpacing: "10px",
+                            padding: "7px",
+                          },
+                          option: {
+                            borderRadius: "12px",
+                            border: "2px #000 double",
+                            backgroundColor: "#526D82",
+                            color: "#000",
+                          },
+                          highlightOption: {
+                            backgroundColor: "#000",
+                          },
+                          notFound: {
+                            fontSize: "16px",
+                            borderRadius: "12px",
+                            border: "2px #526D82 double",
+                            backgroundColor: "#000",
+                          },
+                          optionContainer: {
+                            backgroundColor: "#000",
+                          },
+                        }}
+                      />
+                      <p className="text-red-900 text-[10px]">
+                        {!selectedOptions[0] && "Select a Customer"}
+                      </p>
+                    </div>
 
-                  <div className="m-3 h-20 w-48">
-                    <label>Booking Date</label>
-                    <Field
-                      className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
-                      type="datetime-local"
-                      name="bookingDate"
-                    />
-                    <ErrorMessage
-                      className="text-red-900 text-[10px]"
-                      name="bookingDate"
-                      component="div"
-                    />
+                    <div className="m-3 h-20 w-48">
+                      <label>Booking Date</label>
+                      <Field
+                        className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
+                        type="datetime-local"
+                        name="bookingDate"
+                      />
+                      <ErrorMessage
+                        className="text-red-900 text-[10px]"
+                        name="bookingDate"
+                        component="div"
+                      />
+                    </div>
+                    <div className="m-3 h-20 w-48 z-30">
+                      <label>Start Location </label>
+                      <Search
+                        setFieldValue={setFieldValue}
+                        setSelected={setSelectedStart}
+                        name={"startLocationName"}
+                      />
+                      <ErrorMessage
+                        className="text-red-900 text-[10px]"
+                        name="startLocationName"
+                        component="div"
+                      />
+                    </div>
+
+                    <div className="m-3 h-20 w-48 z-30">
+                      <label>End Location</label>
+                      <Search
+                        setFieldValue={setFieldValue}
+                        setSelected={setSelectedEnd}
+                        name={"endLocationName"}
+                      />
+                      <ErrorMessage
+                        className="text-red-900 text-[10px]"
+                        name="endLocationName"
+                        component="div"
+                      />
+                    </div>
+                    <div className="m-3 h-20 w-48">
+                      <label>Trip Purpose</label>
+                      <Field
+                        className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
+                        type="text"
+                        name="tripPurpose"
+                      />
+                      <ErrorMessage
+                        className="text-red-900 text-[10px]"
+                        name="tripPurpose"
+                        component="div"
+                      />
+                    </div>
+                    <div className="m-3 h-20 w-48">
+                      <label>Status</label>
+                      <Field
+                        className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
+                        name="status"
+                        component="select"
+                      >
+                        <option value="">Select status</option>
+                        <option value="pending">Pending</option>
+                        <option value="confirmed">Confirmed</option>
+                        <option value="completed">Completed</option>
+                      </Field>
+                      <ErrorMessage
+                        className="text-red-900 text-[10px]"
+                        name="status"
+                        component="div"
+                      />
+                    </div>
                   </div>
-                  <div className="m-3 h-20 w-48">
-                    <label>Start Location Latitude</label>
-                    <Field
-                      className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
-                      type="number"
-                      name="startLocationLatitude"
-                    />
-                    <ErrorMessage
-                      className="text-red-900 text-[10px]"
-                      name="startLocationLatitude"
-                      component="div"
-                    />
-                  </div>
-                  <div className="m-3 h-20 w-48">
-                    <label>Start Location Longitude</label>
-                    <Field
-                      className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
-                      type="number"
-                      name="startLocationLongitude"
-                    />
-                    <ErrorMessage
-                      className="text-red-900 text-[10px]"
-                      name="startLocationLongitude"
-                      component="div"
-                    />
-                  </div>
-                  <div className="m-3 h-20 w-48">
-                    <label>End Location Latitude</label>
-                    <Field
-                      className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
-                      type="number"
-                      name="endLocationLatitude"
-                    />
-                    <ErrorMessage
-                      className="text-red-900 text-[10px]"
-                      name="endLocationLatitude"
-                      component="div"
-                    />
-                  </div>
-                  <div className="m-3 h-20 w-48">
-                    <label>End Location Longitude</label>
-                    <Field
-                      className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
-                      type="number"
-                      name="endLocationLongitude"
-                    />
-                    <ErrorMessage
-                      className="text-red-900 text-[10px]"
-                      name="endLocationLongitude"
-                      component="div"
-                    />
-                  </div>
-                  <div className="m-3 h-20 w-48">
-                    <label>Trip Purpose</label>
-                    <Field
-                      className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
-                      type="text"
-                      name="tripPurpose"
-                    />
-                    <ErrorMessage
-                      className="text-red-900 text-[10px]"
-                      name="tripPurpose"
-                      component="div"
-                    />
-                  </div>
-                  <div className="m-3 h-20 w-48">
-                    <label>Status</label>
-                    <Field
-                      className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
-                      name="status"
-                      component="select"
-                    >
-                      <option value="">Select status</option>
-                      <option value="pending">Pending</option>
-                      <option value="confirmed">Confirmed</option>
-                      <option value="completed">Completed</option>
-                    </Field>
-                    <ErrorMessage
-                      className="text-red-900 text-[10px]"
-                      name="status"
-                      component="div"
-                    />
-                  </div>
-                </div>
-                <Button
-                  type="submit"
-                  className="border-double bg-transparent border-secondary border-2 backdrop-blur-3xl flex justify-between gap-2 px-6"
-                >
-                  <BiSolidBookContent className={`text-xl text-secondary`} />
-                  <PiRecycleDuotone className="text-green-800  text-2xl cursor-pointer" />
-                </Button>{" "}
-              </Form>
+                  <Button
+                    type="submit"
+                    className="border-double bg-transparent border-secondary border-2 backdrop-blur-3xl flex justify-between gap-2 px-6"
+                  >
+                    <BiSolidBookContent className={`text-xl text-secondary`} />
+                    <PiRecycleDuotone className="text-green-800  text-2xl cursor-pointer" />
+                  </Button>{" "}
+                </Form>
+              )}
             </Formik>
           </DialogDescription>
         </DialogHeader>

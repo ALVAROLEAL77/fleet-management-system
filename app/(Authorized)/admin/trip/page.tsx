@@ -17,22 +17,6 @@ const Customer = () => {
     },
 
     {
-      accessorKey: "startLocationLatitude",
-      header: "Start Location Latitude",
-    },
-    {
-      accessorKey: "startLocationLongitude",
-      header: "Start Location Longitude",
-    },
-    {
-      accessorKey: "endLocationLatitude",
-      header: "End Location Latitude",
-    },
-    {
-      accessorKey: "endLocationLongitude",
-      header: "End Location Longitude",
-    },
-    {
       accessorKey: "startTime",
       header: "Start Time",
     },
@@ -77,7 +61,7 @@ const Customer = () => {
     }).then();
   }
   return (
-    <div className="w-full rounded-2xl border-double border-secondary border-2 backdrop-blur-3xl shadow-md shadow-secondary p-7 pt-3">
+    <div className="w-full rounded-xl border-double border-secondary border-2 backdrop-blur-3xl shadow-md shadow-secondary p-7 pt-3">
       <div className="flex justify-between w-full">
         <h1 className="font-rock text-secondary tracking-widest space-x-10 uppercase m-3">
           {path.split("/").join(" > ").substring(2)}

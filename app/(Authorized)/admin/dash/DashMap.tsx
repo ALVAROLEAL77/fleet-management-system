@@ -4,6 +4,7 @@ import {
   InfoWindow,
   LoadScript,
   Marker,
+  MarkerF,
   useLoadScript,
 } from "@react-google-maps/api";
 import dt from "dotenv";
@@ -49,9 +50,8 @@ function DashMap() {
   }, []);
 
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: `${process.env.NEXT_PUBLIC_GMAPS_API}`,
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GMAPS_API,
   });
-  console.log(process.env.NEXT_PUBLIC_GMAPS_API);
   useEffect(() => {
     if ("geolocation" in window.navigator) {
       window.navigator.geolocation.getCurrentPosition(function (position) {
@@ -73,22 +73,23 @@ function DashMap() {
           center={current}
           zoom={10}
         >
-          {vehicles.map((vehicle) => (
-            <Marker
-              key={vehicle.id}
-              position={{
-                lat: Number(vehicle.currentLocation?.split(" ")[0]),
-                lng: Number(vehicle.currentLocation?.split(" ")[1]),
-              }}
-              onClick={() => setSelectedVehicle(vehicle)}
-              icon={customMarker}
-            />
-          ))}
+          {vehicles &&
+            vehicles.map((vehicle) => (
+              <MarkerF
+                key={vehicle.id}
+                position={{
+                  lat: Number(vehicle.currentLocation?.split(",")[0]),
+                  lng: Number(vehicle.currentLocation?.split(",")[1]),
+                }}
+                onClick={() => setSelectedVehicle(vehicle)}
+                icon={customMarker}
+              />
+            ))}
           {selectedVehicle && (
             <InfoWindow
               position={{
-                lat: Number(selectedVehicle.currentLocation?.split(" ")[0]),
-                lng: Number(selectedVehicle.currentLocation?.split(" ")[1]),
+                lat: Number(selectedVehicle.currentLocation?.split(",")[0]),
+                lng: Number(selectedVehicle.currentLocation?.split(",")[1]),
               }}
               zIndex={1}
               onCloseClick={() => setSelectedVehicle(undefined)}
@@ -105,7 +106,11 @@ function DashMap() {
                 </h1>
                 <h1 className="p-2">
                   <span className="font-bold">GPS: </span>{" "}
-                  {selectedVehicle.currentLocation}
+                  {selectedVehicle.currentLocation},{" "}
+                </h1>
+                <h1 className="p-2">
+                  <span className="font-bold">Location: </span>{" "}
+                  {selectedVehicle.currentLocationName}{" "}
                 </h1>
               </div>
             </InfoWindow>

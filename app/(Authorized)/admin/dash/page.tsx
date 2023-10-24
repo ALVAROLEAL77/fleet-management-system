@@ -78,7 +78,7 @@ const DashBody = () => {
 
   return (
     <div className="w-full">
-      <div className="grid md:grid-cols-3 gap-x-3 gap-y-10 grid-cols-1 p-6  rounded-bl-3xl rounded-br-3xl w-full rounded-2xl border-double border-secondary border-2 backdrop-blur-3xl shadow-md shadow-secondary">
+      <div className="grid md:grid-cols-3 gap-x-3 gap-y-10 grid-cols-1 p-6  rounded-bl-3xl rounded-br-3xl w-full rounded-xl border-double border-secondary border-2 backdrop-blur-3xl shadow-md shadow-secondary">
         <div className=" flex flex-col md:items-start items-center gap-5 justify-center h-[300px]">
           <h4 className="md:text-lg text-xl font-bold font-rock tracking-widest flex items-center gap-2 text-secondary px-1">
             <ImClock />
@@ -104,31 +104,31 @@ const DashBody = () => {
           Icon={PiPersonFill}
           count={driverCount}
           name={"drivers"}
-          path={"/p/driver"}
+          path={"/admin/driver"}
         />
         <Card
           Icon={PiCarFill}
           count={vehicleCount}
           name={"vehicles"}
-          path={"/p/vehicle"}
+          path={"/admin/vehicle"}
         />
         <Card
           Icon={ImUserTie}
           count={customerCount}
           name={"customers"}
-          path={"/p/customer"}
+          path={"/admin/customer"}
         />
         <Card
           Icon={AiFillCarryOut}
           count={tripCount}
           name={"trips"}
-          path={"/p/trip"}
+          path={"/admin/trip"}
         />
         <Card
           Icon={BiSolidBookContent}
           count={bookCount}
           name={"booking"}
-          path={"/p/booking"}
+          path={"/admin/booking"}
         />
       </div>
       <div className="w-full flex flex-col justify-center items-center rounded-bl-3xl rounded-br-3xl rounded-2xl border-double border-secondary border-2 backdrop-blur-3xl shadow-md shadow-secondary">
