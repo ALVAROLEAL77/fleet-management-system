@@ -156,7 +156,7 @@ export default function DataTable<Data>({
                                 )
                               ) {
                                 deleteData(row.getValue("id"));
-                                refetch();
+                                setTimeout(() => refetch(), 10000);
                               }
                             }}
                             className="text-red-800 text-2xl cursor-pointer"

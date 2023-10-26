@@ -8,6 +8,7 @@ import {
   useLoadScript,
 } from "@react-google-maps/api";
 import dt from "dotenv";
+import Loading from "../loading";
 dt.config();
 const containerStyle = {
   width: "100%",
@@ -16,9 +17,10 @@ const containerStyle = {
   border: "3px double #526D82",
 };
 
-function DashMap() {
+function DashMap({ isLoaded }) {
   const [selectedVehicle, setSelectedVehicle] = useState();
   const [options, setOptions] = useState([]);
+  const [map, setMap] = useState(null);
   const [vehicles, setVehicles] = useState([]);
   const [current, setCurrent] = useState({ lat: 0, lng: 0 });
   const customMarker = {
@@ -34,7 +36,6 @@ function DashMap() {
     fetch(process.env.NEXT_PUBLIC_APP_URL + "api/vehicle")
       .then((res) => res.json())
       .then((res) => {
-        console.log("Vehicle Data:", res);
         setOptions(
           res.map((vehicle) => ({
             value: vehicle.id,
@@ -49,9 +50,6 @@ function DashMap() {
       });
   }, []);
 
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GMAPS_API,
-  });
   useEffect(() => {
     if ("geolocation" in window.navigator) {
       window.navigator.geolocation.getCurrentPosition(function (position) {
@@ -67,11 +65,17 @@ function DashMap() {
 
   return (
     <>
-      {isLoaded && (
+      {isLoaded ? (
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={current}
           zoom={10}
+          onUnmount={() => {
+            setMap(null);
+          }}
+          onLoad={(map) => {
+            setMap(map);
+          }}
         >
           {vehicles &&
             vehicles.map((vehicle) => (
@@ -116,6 +120,10 @@ function DashMap() {
             </InfoWindow>
           )}
         </GoogleMap>
+      ) : (
+        <>
+          <Loading />
+        </>
       )}
     </>
   );

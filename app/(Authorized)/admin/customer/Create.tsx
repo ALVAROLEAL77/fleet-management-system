@@ -44,7 +44,9 @@ const Create = ({ refetch }) => {
             Create Customer
           </DialogTitle>
           <DialogDescription className="font-rock pt-4 flex justify-evenly items-start  w-fit">
-            <ImUserTie className={`text-6xl text-secondary m-10`} />
+            <ImUserTie
+              className={`text-6xl text-secondary m-10 drop-shadow-[5px_20px_30px_rgba(82,109,130,1)]`}
+            />
 
             <Formik
               initialValues={{

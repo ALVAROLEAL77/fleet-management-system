@@ -18,7 +18,8 @@ export async function POST(req: NextRequest) {
       id: v4(),
       ...data,
     });
-    return NextResponse.json(result);
+    console.log(result);
+    return NextResponse.json({ result: result, message: "Created" });
   } catch (e) {
     return NextResponse.json({ message: e.message, status: 400 });
   }

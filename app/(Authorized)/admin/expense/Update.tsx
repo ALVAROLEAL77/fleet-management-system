@@ -101,7 +101,9 @@ const Update = ({ id, refetch }) => {
                 Update Expense
               </DialogTitle>
               <DialogDescription className="font-rock pt-4 flex justify-evenly items-start  w-fit">
-                <FaMoneyBills className={`text-6xl text-secondary m-10`} />
+                <FaMoneyBills
+                  className={`text-6xl text-secondary m-10 drop-shadow-[5px_20px_30px_rgba(82,109,130,1)]`}
+                />
 
                 <Formik
                   initialValues={initialValues}

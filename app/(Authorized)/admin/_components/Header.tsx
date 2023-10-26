@@ -6,7 +6,7 @@ import Link from "next/link";
 const Header = ({ setdrop, drop }) => {
   return (
     <div
-      className={`self-end flex bg-transparent items-center shadow-lg shadow-secondary transition-all duration-100 rounded-xl border-[2px] border-double border-secondary my-4 mr-8 drop-shadow-3xl cursor-pointer`}
+      className={`self-end flex bg-transparent items-center shadow-lg shadow-secondary transition-all duration-100 rounded-xl border-[2px] border-double border-secondary md:my-4 md:mr-8 drop-shadow-3xl cursor-pointer`}
     >
       <div className="flex justify-between items-center font-poppins whitespace-nowrap w-full">
         <div

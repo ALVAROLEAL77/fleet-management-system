@@ -63,7 +63,9 @@ const Update = ({ id, refetch }) => {
                 Update Vehicle
               </DialogTitle>
               <DialogDescription className="font-rock pt-4 flex justify-evenly items-start  w-fit">
-                <PiCarFill className={`text-6xl text-secondary m-10`} />
+                <PiCarFill
+                  className={`text-6xl text-secondary m-10 drop-shadow-[5px_20px_30px_rgba(82,109,130,1)]`}
+                />
 
                 <Formik
                   initialValues={initialValues}

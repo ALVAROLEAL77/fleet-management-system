@@ -71,6 +71,8 @@ const Driver = () => {
   }, []);
   console.log(data);
   function deleteData(id) {
+    setData(data.filter((dt) => dt.id != id));
+
     return fetch(process.env.NEXT_PUBLIC_APP_URL + `api/user/${id}`, {
       method: "delete",
       headers: { "Content-Types": "application/json" },

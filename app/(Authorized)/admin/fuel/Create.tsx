@@ -61,7 +61,9 @@ const Create = ({ refetch }) => {
             Create Fuel Record
           </DialogTitle>
           <DialogDescription className="font-rock pt-4 flex justify-evenly items-start  w-fit">
-            <BsFillFuelPumpFill className={`text-6xl text-secondary m-10`} />
+            <BsFillFuelPumpFill
+              className={`text-6xl text-secondary m-10 drop-shadow-[5px_20px_30px_rgba(82,109,130,1)]`}
+            />
 
             <Formik
               initialValues={{

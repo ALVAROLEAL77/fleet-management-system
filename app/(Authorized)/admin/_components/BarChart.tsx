@@ -49,12 +49,11 @@ export default function BarCharter() {
     });
     setData(data);
   }, [vehicleConsumption]);
-  console.log("d", vehicleConsumption);
 
   return (
     <>
       {data && (
-        <div className="relative flex flex-col break-words mb-6 p-4 m-3 w-[800px]">
+        <div className="relative flex flex-col break-words mb-6 p-4 m-3 md:w-[800px] w-[400px]">
           <h1 className="font-rock font-extralight uppercase text-secondary px-2 text-center pb-4 text-lg">
             Fuel Consumptions
           </h1>
@@ -73,11 +72,7 @@ export default function BarCharter() {
                 tickLine={false}
                 axisLine={false}
               />
-              <CartesianGrid
-                stroke="#526d82"
-                strokeDasharray="10 10"
-                vertical={false}
-              />
+              <CartesianGrid stroke="#526d82" vertical={false} />
               <Bar dataKey="total" fill="#526d82" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>

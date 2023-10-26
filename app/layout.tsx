@@ -28,12 +28,8 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <Script src="http://localhost:8097"></Script>
-        <Script
-          src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GMAPS_API}&libraries=places&callback=initMap`}
-          async
-        ></Script>
       </head>
-      <body className={`${inter.className}`}>
+      <body className={`${inter.className} bg-tertiary h-fit`}>
         <ToastContainer
           toastClassName={({ type }) =>
             contextClass[type || "default"] +
@@ -47,8 +43,8 @@ export default function RootLayout({
           hideProgressBar={true}
           transition={Slide}
         />
-        <div className="absolute inset-0 w-1/2 h-1/4 bg-gradient-to-br from-secondary via-transparent to-transparent"></div>
-        <div className="bg-tertiary">
+        {/* <div className="absolute inset-0 w-1/2 h-1/4 bg-gradient-to-br from-secondary via-transparent to-transparent"></div> */}
+        <div className="h-screen">
           <SessionProvider>{children}</SessionProvider>
         </div>
       </body>

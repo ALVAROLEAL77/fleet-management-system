@@ -14,10 +14,10 @@ const PLayout = ({ children }: { children: ReactNode }) => {
 
   return (
     <>
-      <div className="overflow-hidden w-full flex justify-stretch items-stretch">
-        <SideBar flat={flat} setflat={setflat} />
-        <div className="flex flex-col items-start justify-start w-full mx-8">
-          <div className="flex justify-between w-full mb-1">
+      <div className="overflow-hidden bg-gradient-to-bl to-secondary via-transparent from-transparent   w-full flex justify-stretch items-stretch">
+        <SideBar setdrop={setdrop} drop={drop} />
+        <div className="flex flex-col items-start justify-start w-full md:mx-8 mt-28 m-1 md:m-0">
+          <div className="md:flex hidden justify-between w-full mb-1">
             <h1 className="uppercase font-bold tracking-widest drop-shadow-[0px_3px_10px_rgba(82,109,130,1)] text-secondary bg-clip-text text-center font-rock flex items-center text-4xl">
               Fleet management system
             </h1>

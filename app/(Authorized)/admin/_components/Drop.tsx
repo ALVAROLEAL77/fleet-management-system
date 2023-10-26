@@ -6,7 +6,7 @@ import { signOut } from "next-auth/react";
 const Drop = ({ drop }) => {
   return (
     <div
-      className={`absolute w-40 right-2 top-14 font-rock font-thin tracking-widest  transition-all duration-300 ${
+      className={`absolute w-40 right-2 md:top-14 top-28 font-rock font-thin tracking-widest  transition-all duration-300 ${
         drop
           ? "translate-y-0 opacity-100 visible"
           : "-translate-y-4 opacity-0 invisible"

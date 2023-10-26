@@ -27,7 +27,7 @@ const Create = ({ refetch }) => {
       headers: { "Content-Types": "application/json" },
     })
       .then((res) => res.json())
-      .then((res) => toast.success(res));
+      .then((res) => toast.success(res.message));
   };
   return (
     <Dialog onOpenChange={refetch}>
@@ -43,7 +43,9 @@ const Create = ({ refetch }) => {
             Create Driver
           </DialogTitle>
           <DialogDescription className="font-rock pt-4 flex justify-evenly items-start  w-fit">
-            <PiPersonFill className={`text-6xl text-secondary m-10`} />
+            <PiPersonFill
+              className={`text-6xl text-secondary m-10 drop-shadow-[5px_20px_30px_rgba(82,109,130,1)]`}
+            />
 
             <Formik
               initialValues={{

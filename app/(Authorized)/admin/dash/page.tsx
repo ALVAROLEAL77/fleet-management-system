@@ -16,6 +16,7 @@ import { PiCarFill, PiPersonFill } from "react-icons/pi";
 import { AiFillCarryOut } from "react-icons/ai";
 import WaffleChart from "../_components/WaffleChart";
 import BarCharter from "../_components/BarChart";
+import { useLoadScript } from "@react-google-maps/api";
 
 const DashBody = () => {
   const [date, setDate] = useState(new Date());
@@ -27,7 +28,9 @@ const DashBody = () => {
   const [customerCount, setCustomerCount] = useState(0);
   const [bookCount, setBookCount] = useState(0);
   const { data: session, status } = useSession();
-  console.log(session);
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GMAPS_API,
+  });
   useEffect(() => {
     Promise.all([
       fetch(process.env.NEXT_PUBLIC_APP_URL + "api/driver", {
@@ -77,29 +80,29 @@ const DashBody = () => {
   }, []);
 
   return (
-    <div className="w-full">
-      <div className="grid md:grid-cols-3 gap-x-3 gap-y-10 grid-cols-1 p-6  rounded-bl-3xl rounded-br-3xl w-full rounded-xl border-double border-secondary border-2 backdrop-blur-3xl shadow-md shadow-secondary">
-        <div className=" flex flex-col md:items-start items-center gap-5 justify-center h-[300px]">
-          <h4 className="md:text-lg text-xl font-bold font-rock tracking-widest flex items-center gap-2 text-secondary px-1">
+    <>
+      <div className="grid md:grid-cols-3 gap-y-10 grid-cols-1 md:py-4 md:px-0 m-6 md:m-0 rounded-bl-3xl rounded-br-3xl md:w-full rounded-xl border-double border-secondary border-2 backdrop-blur-lg shadow-md shadow-secondary">
+        <div className=" flex flex-col md:items-start items-center p-16 md:p-auto gap-5 justify-center h-[300px]">
+          <h4 className="md:text-lg text-sm font-bold font-rock tracking-widest flex items-center gap-2 text-secondary px-1">
             <ImClock />
             {date.toLocaleString("en-US", {
               hour: "numeric",
               minute: "numeric",
             })}
           </h4>
-          <h1 className="md:text-5xl text-6xl  drop-shadow-primary font-extrabold font-rock tracking-widest uppercase bg-secondary text-transparent bg-clip-text break-words break-all drop-shadow-[0px_3px_10px_rgba(82,109,130,1)]">
+          <h1 className="md:text-[39px] text-5xl drop-shadow-primary font-semibold font-rock tracking-widest uppercase bg-secondary text-transparent bg-clip-text break-words md:break-all keep-all drop-shadow-[0px_3px_10px_rgba(82,109,130,1)]">
             Dashboard
           </h1>
-          <h1 className="md:text-2xl text-3xl font-bold font-neon tracking-widest pt-1 capitalize text-primary drop-shadow-[0px_3px_3px_rgba(255,255,255,1)]">
+          <h1 className="text-xl font-bold font-neon tracking-widest pt-1 capitalize text-primary drop-shadow-[0px_3px_3px_rgba(255,255,255,1)] break-words md:break-all keep-all ">
             Welcome Back,
             {session?.user?.firstName}
           </h1>
         </div>
-        <div className="col-span-2">
-          <DashMap />
+        <div className="md:col-span-2">
+          <DashMap isLoaded={isLoaded} />
         </div>
       </div>
-      <div className="flex flex-wrap justify-center col-span-5 md:my-6 gap-3 items-start content-start transition-all duration-500">
+      <div className="relative flex flex-wrap justify-center col-span-5 md:my-6 my-10 gap-3 items-start content-start transition-all duration-500">
         <Card
           Icon={PiPersonFill}
           count={driverCount}
@@ -135,7 +138,7 @@ const DashBody = () => {
         <h1 className="md:text-4xl text-4xl  font-bold font-rock tracking-widest p-5 uppercase text-secondary break-words break-all drop-shadow-[0px_3px_10px_rgba(82,109,130,1)]">
           Analytics
         </h1>
-        <div className=" h-[300px] flex justify-center items-start  w-full m-3">
+        <div className=" md:h-[300px] flex justify-center items-start flex-wrap w-[100px] md:w-full m-3">
           {waffleChartData && (
             <>
               <BarCharter />
@@ -144,7 +147,7 @@ const DashBody = () => {
           )}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -16,7 +16,6 @@ const WaffleChart = ({ data }) => {
     setrealdata(
       data.labels &&
         data.labels.map((label, index) => {
-          console.log(data.data);
           return {
             name: label,
             value: data.data[index],
@@ -52,7 +51,6 @@ const WaffleChart = ({ data }) => {
       </text>
     );
   };
-  console.log("jdduj", realdata, color);
   return (
     <div className="w-full mb-6 p-4 m-3">
       {" "}
@@ -75,7 +73,6 @@ const WaffleChart = ({ data }) => {
               >
                 {realdata &&
                   realdata.map((entry, index) => {
-                    console.log("djhd", entry, index);
                     return (
                       <Cell
                         key={`cell-${index}`}

@@ -8,7 +8,6 @@ import Update from "./Update";
 const Vehicle = () => {
   const path = usePathname();
   const [vehicleData, setVehicleData] = useState([]);
-  const [typeData, setTypeData] = useState([]);
   const [vehicleColumns, setVehicleCols] = useState([
     {
       accessorKey: "id",
@@ -63,15 +62,17 @@ const Vehicle = () => {
       });
   }, []);
   function deleteData(id) {
+    setVehicleData(vehicleData.filter((dt) => dt.id != id));
+
     return fetch(process.env.NEXT_PUBLIC_APP_URL + `api/vehicle/${id}`, {
       method: "delete",
       headers: { "Content-Types": "application/json" },
     }).then();
   }
   return (
-    <div className="w-full rounded-xl border-double border-secondary border-2 backdrop-blur-3xl shadow-md shadow-secondary p-7 pt-3">
-      <div className="flex justify-between w-full">
-        <h1 className="font-rock text-secondary tracking-widest space-x-10 uppercase m-3">
+    <div className="w-full rounded-xl border-double border-secondary md:border-2 md:backdrop-blur-3xl md:shadow-md md:shadow-secondary p-7 pt-3">
+      <div className="flex justify-between w-full m-2">
+        <h1 className="font-rock text-secondary tracking-widest space-x-10 uppercase m-3 md:block hidden">
           {path.split("/").join(" > ").substring(2)}
         </h1>
         <Create refetch={refetch} />
