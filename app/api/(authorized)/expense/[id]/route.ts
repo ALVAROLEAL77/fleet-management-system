@@ -15,6 +15,22 @@ export async function GET(
     return NextResponse.json({ message: e.message, status: 400 });
   }
 }
+export async function POST(
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  try {
+    const { id } = await params;
+    const data = await req.json();
+    const result = await models.Expense.create({
+      id,
+      ...data,
+    });
+    return NextResponse.json({ result: result, message: "Created" });
+  } catch (e) {
+    return NextResponse.json({ message: e.message, status: 400 });
+  }
+}
 
 export async function DELETE(
   req: NextRequest,

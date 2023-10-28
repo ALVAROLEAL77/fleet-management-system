@@ -14,7 +14,7 @@ const PLayout = ({ children }: { children: ReactNode }) => {
 
   return (
     <>
-      <div className="overflow-hidden bg-gradient-to-l to-[#202B34] via-transparent from-[#202B34] w-full flex justify-stretch items-stretch">
+      <div className="overflow-hidden bg-gradient-to-tl to-[#202B34] via-transparent from-[#202B34] w-full flex justify-stretch items-stretch">
         <SideBar setdrop={setdrop} drop={drop} />
         <div className="flex flex-col items-start justify-start w-full md:mx-8 mt-28 m-1 md:m-0 md:mt-1">
           <div className="md:flex hidden justify-between w-full mb-1">

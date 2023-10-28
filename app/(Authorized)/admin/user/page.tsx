@@ -8,28 +8,9 @@ import Create from "./Create";
 import Link from "next/link";
 import Update from "./Update";
 
-const columns = [
-  {
-    accessorKey: "name",
-    header: "Name",
-  },
-  {
-    accessorKey: "age",
-    header: "Age",
-  },
-  {
-    accessorKey: "email",
-    header: "Email",
-  },
-  {
-    accessorKey: "actions",
-    header: "Actions",
-  },
-];
-
 const Driver = () => {
   const path = usePathname();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState();
   const [columns, setCols] = useState([
     {
       accessorKey: "id",
@@ -80,7 +61,7 @@ const Driver = () => {
   }
   return (
     <div className="w-full rounded-xl border-double border-secondary border-2 backdrop-blur-3xl shadow-md shadow-secondary p-7 pt-3">
-      <div className="flex justify-between w-full">
+      <div className="flex justify-between w-full drop-shadow-[0px_3px_10px_rgba(82,109,130,1)]">
         <h1 className="font-rock text-secondary tracking-widest space-x-10 uppercase m-3 w-fit">
           {path.split("/").join(" > ").substring(2)}|{" "}
           <Link href={"/admin/userrole"}>User Roles</Link>

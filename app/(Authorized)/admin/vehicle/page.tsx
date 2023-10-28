@@ -7,7 +7,7 @@ import Update from "./Update";
 
 const Vehicle = () => {
   const path = usePathname();
-  const [vehicleData, setVehicleData] = useState([]);
+  const [vehicleData, setVehicleData] = useState();
   const [vehicleColumns, setVehicleCols] = useState([
     {
       accessorKey: "id",
@@ -71,7 +71,7 @@ const Vehicle = () => {
   }
   return (
     <div className="w-full rounded-xl border-double border-secondary md:border-2 md:backdrop-blur-3xl md:shadow-md md:shadow-secondary bg-tertiary bg-opacity-50 p-7 pt-3">
-      <div className="flex justify-between w-full m-2">
+      <div className="flex justify-between w-full drop-shadow-[0px_3px_10px_rgba(82,109,130,1)]">
         <h1 className="font-rock text-secondary tracking-widest space-x-10 uppercase m-3 md:block hidden">
           {path.split("/").join(" > ").substring(2)}
         </h1>
