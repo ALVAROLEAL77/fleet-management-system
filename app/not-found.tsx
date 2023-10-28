@@ -9,13 +9,6 @@ const NotFound = () => {
         </p>
         <PiMaskSadDuotone className="text-tertiary text-[300px]" />
         <br />
-        {/* <Link
-          href={"/p/dash"}
-          className="font-thin font-rock px-3 border-b-2 mx-2 border-b-tertiary text-tertiary"
-        >
-          {" "}
-          home
-        </Link> */}
       </div>
     </div>
   );

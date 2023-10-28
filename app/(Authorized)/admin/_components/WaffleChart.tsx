@@ -8,6 +8,7 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
+import Loading from "../loading";
 
 const WaffleChart = ({ data }) => {
   const [realdata, setrealdata] = useState([]);
@@ -52,19 +53,19 @@ const WaffleChart = ({ data }) => {
     );
   };
   return (
-    <div className="w-full mb-6 p-4 m-3">
+    <div className="mb-6 m-3 rounded-2xl border-double border-secondary border-2 backdrop-blur-3xl shadow-md shadow-secondary">
       {" "}
-      {data.data && (
+      {data ? (
         <>
           <h1 className="font-rock font-extralight uppercase text-secondary px-2 text-center text-lg">
             DISTRIBUTIONS
           </h1>
           <div className="w-full flex justify-center items-start">
-            <PieChart width={300} height={300}>
+            <PieChart width={250} height={250}>
               <Pie
                 data={realdata && realdata}
                 cx="50%"
-                cy="39%"
+                cy="50%"
                 labelLine={false}
                 label={renderer}
                 outerRadius={110}
@@ -86,6 +87,8 @@ const WaffleChart = ({ data }) => {
             </PieChart>
           </div>
         </>
+      ) : (
+        <Loading />
       )}
     </div>
   );

@@ -17,6 +17,7 @@ import { AiFillCarryOut } from "react-icons/ai";
 import WaffleChart from "../_components/WaffleChart";
 import BarCharter from "../_components/BarChart";
 import { useLoadScript } from "@react-google-maps/api";
+import LineCharter from "../_components/LineChart";
 
 const DashBody = () => {
   const [date, setDate] = useState(new Date());
@@ -69,7 +70,7 @@ const DashBody = () => {
   }, []);
   useEffect(() => {
     setWaffleChartData({
-      labels: ["drivers", "vehicles", "customers", "trips"],
+      labels: ["books", "vehicles", "customers", "trips", "drivers"],
       data: [bookCount, vehicleCount, customerCount, tripCount, driverCount],
       backgroundColor: ["#293641", "#31414e", "#394c5b", "#415768", "#182027"],
     });
@@ -81,7 +82,7 @@ const DashBody = () => {
 
   return (
     <>
-      <div className="grid md:grid-cols-3 gap-y-10 grid-cols-1 md:py-4 md:px-0 m-6 md:m-0 rounded-bl-3xl rounded-br-3xl md:w-full rounded-xl border-double border-secondary border-2 backdrop-blur-lg shadow-md shadow-secondary">
+      <div className="grid md:grid-cols-3 gap-y-10 grid-cols-1 md:py-4 md:px-0 m-6 md:m-0 md:mt-1  rounded-bl-3xl rounded-br-3xl md:w-full rounded-xl border-double border-secondary border-2 backdrop-blur-lg shadow-md shadow-secondary">
         <div className=" flex flex-col md:items-start items-center p-16 md:p-auto gap-5 justify-center h-[300px]">
           <h4 className="md:text-lg text-sm font-bold font-rock tracking-widest flex items-center gap-2 text-secondary px-1">
             <ImClock />
@@ -90,15 +91,14 @@ const DashBody = () => {
               minute: "numeric",
             })}
           </h4>
-          <h1 className="md:text-[39px] text-5xl drop-shadow-primary font-semibold font-rock tracking-widest uppercase bg-secondary text-transparent bg-clip-text break-words md:break-all keep-all drop-shadow-[0px_3px_10px_rgba(82,109,130,1)]">
+          <h1 className="md:text-[39px] text-5xl drop-shadow-primary font-extrabold font-rock tracking-widest uppercase bg-secondary text-transparent bg-clip-text break-words md:break-all keep-all drop-shadow-[0px_3px_10px_rgba(82,109,130,1)]">
             Dashboard
           </h1>
           <h1 className="text-xl font-bold font-neon tracking-widest pt-1 capitalize text-primary drop-shadow-[0px_3px_3px_rgba(255,255,255,1)] break-words md:break-all keep-all ">
-            Welcome Back,
-            {session?.user?.firstName}
+            Welcome Back, {session?.user?.firstName}
           </h1>
         </div>
-        <div className="md:col-span-2">
+        <div className="md:col-span-2 mr-2">
           <DashMap isLoaded={isLoaded} />
         </div>
       </div>
@@ -138,7 +138,7 @@ const DashBody = () => {
         <h1 className="md:text-4xl text-4xl  font-bold font-rock tracking-widest p-5 uppercase text-secondary break-words break-all drop-shadow-[0px_3px_10px_rgba(82,109,130,1)]">
           Analytics
         </h1>
-        <div className=" md:h-[300px] flex justify-center items-start flex-wrap w-[100px] md:w-full m-3">
+        <div className=" md:h-full grid grid-cols-2 grid-rows-2 w-[100px] md:w-full m-3">
           {waffleChartData && (
             <>
               <BarCharter />

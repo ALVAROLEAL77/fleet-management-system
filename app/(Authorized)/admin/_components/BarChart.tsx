@@ -6,10 +6,12 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
+  Tooltip,
 } from "recharts";
 import { useEffect, useState } from "react";
+import Loading from "../loading";
 export default function BarCharter() {
-  const [vehicle, setVehicele] = useState([]);
+  const [vehicle, setVehicle] = useState([]);
   const [vehicleConsumption, setVehicleConsumption] = useState([]);
   const [fueling, setFueling] = useState([]);
   const [data, setData] = useState([]);
@@ -29,11 +31,10 @@ export default function BarCharter() {
       })
       .then(([fuelingData, vehicleData]) => {
         setFueling(fuelingData);
-        setVehicele(vehicleData);
+        setVehicle(vehicleData);
         const fuel = vehicleData.map(
           (vehicle) =>
-            fuelingData.filter((fuel) => vehicle.vehicleId === vehicle.id)
-              .length
+            fuelingData.filter((fuel) => fuel.vehicleId === vehicle.id).length
         );
 
         setVehicleConsumption(fuel);
@@ -49,11 +50,11 @@ export default function BarCharter() {
     });
     setData(data);
   }, [vehicleConsumption]);
-
+  console.log(data);
   return (
     <>
-      {data && (
-        <div className="relative flex flex-col break-words mb-6 p-4 m-3 md:w-[800px] w-[400px]">
+      {data ? (
+        <div className="relative flex flex-col break-words mb-6 py-4 m-3 md:flex-1 rounded-2xl border-double border-secondary border-2 backdrop-blur-3xl shadow-md shadow-secondary">
           <h1 className="font-rock font-extralight uppercase text-secondary px-2 text-center pb-4 text-lg">
             Fuel Consumptions
           </h1>
@@ -72,11 +73,18 @@ export default function BarCharter() {
                 tickLine={false}
                 axisLine={false}
               />
-              <CartesianGrid stroke="#526d82" vertical={false} />
-              <Bar dataKey="total" fill="#526d82" radius={[4, 4, 0, 0]} />
+              <CartesianGrid
+                stroke="#526d82"
+                vertical={false}
+                horizontal={false}
+              />
+              <Bar dataKey="total" fill="#526d82" radius={[2, 2, 0, 0]} />
+              <Tooltip />
             </BarChart>
           </ResponsiveContainer>
         </div>
+      ) : (
+        <Loading />
       )}
     </>
   );

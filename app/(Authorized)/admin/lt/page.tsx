@@ -104,7 +104,7 @@ const Track = () => {
     googleMapsApiKey: process.env.NEXT_PUBLIC_GMAPS_API,
   });
   return (
-    <div className="w-full rounded-xl border-double border-secondary md:border-2 md:backdrop-blur-3xl md:shadow-md md:shadow-secondary p-7 pt-3">
+    <div className="w-full rounded-xl border-double border-secondary md:border-2 md:backdrop-blur-3xl md:shadow-md md:shadow-secondary bg-tertiary bg-opacity-50 p-7 pt-3">
       <div className="flex justify-between w-full m-2">
         <h1 className="font-rock text-secondary tracking-widest space-x-10 uppercase m-3 md:block hidden">
           {path.split("/").join(" > ").substring(2)}

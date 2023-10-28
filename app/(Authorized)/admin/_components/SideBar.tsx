@@ -17,20 +17,19 @@ import Link from "next/link";
 import { ImUserTie } from "react-icons/im";
 import { AiFillCarryOut } from "react-icons/ai";
 import { BsFillFuelPumpFill } from "react-icons/bs";
-import Header from "./Header";
-import Drop from "./Drop";
 // @ts-ignore
-const SideBar = ({ setdrop, drop }) => {
+const SideBar = ({}) => {
+  const [drops, setDrops] = useState({ employee: false, job: false });
   const [hover, setHover] = useState({});
   return (
     <div
-      className={`md:h-screen w-[90%] md:relative fixed md:w-auto md:ml-4 flex flex-col justify-center items-center drop-shadow-[0px_3px_10px_rgba(82,109,130,1)]`}
+      className={`md:h-screen flex flex-col justify-center font-poppins tracking-widest uppercase ml-3 bg-transparent z-50 w-16`}
     >
       <ul
-        className={`flex md:flex-col flex-row w-fit md:m-0 mt-3 md:h-fit h-20 overflow-x-scroll md:overflow-x-hidden overflow-y-hidden items-start border-[2px] border-double border-secondary rounded-xl py-3 shadow-md shadow-secondary bg-transparent backdrop-blur-2xl`}
+        className={`flex fixed flex-col w-fit h-fit items-start border-[2px] border-double border-secondary rounded-2xl py-3 shadow-md shadow-secondary bg-tertiary bg-opacity-30 backdrop-blur-2xl`}
       >
         <li
-          className="w-full overflow-visible"
+          className="w-full py-1"
           onMouseOver={() =>
             setHover((prev) => {
               return { ...prev, dash: true };
@@ -44,7 +43,7 @@ const SideBar = ({ setdrop, drop }) => {
         >
           <Link
             href={"/admin/dash"}
-            className={` flex md:flex-row flex-col items-center justify-start w-full p-3 px-4  ${
+            className={` flex items-center justify-start w-full p-3 px-4  ${
               hover.dash ? "text-primary" : "text-secondary"
             }`}
           >
@@ -56,9 +55,7 @@ const SideBar = ({ setdrop, drop }) => {
 
             <p
               className={`font-thin tracking-widest whitespace-nowrap font-rock text-sm duration-500 fixed z-50 overflow-hidden ${
-                hover.dash
-                  ? " md:translate-x-14 md:translate-y-0 translate-y-14 w-fit"
-                  : "md:translate-x-10 md:translate-y-0 translate-y-10 w-0"
+                hover.dash ? " translate-x-14 w-fit" : "translate-x-10 w-0"
               }`}
             >
               Dashboard
@@ -66,7 +63,7 @@ const SideBar = ({ setdrop, drop }) => {
           </Link>
         </li>
         <li
-          className="w-full"
+          className="w-full py-1"
           onMouseOver={() =>
             setHover((prev) => {
               return { ...prev, driver: true };
@@ -80,7 +77,7 @@ const SideBar = ({ setdrop, drop }) => {
         >
           <Link
             href={"/admin/driver"}
-            className={` flex md:flex-row flex-col items-center justify-start w-full p-3 px-4  ${
+            className={` flex items-center justify-start w-full p-3 px-4  ${
               hover.driver ? "text-primary" : "text-secondary"
             }`}
           >
@@ -92,9 +89,7 @@ const SideBar = ({ setdrop, drop }) => {
 
             <p
               className={`font-thin tracking-widest whitespace-nowrap font-rock text-sm duration-500 fixed z-50 overflow-hidden ${
-                hover.driver
-                  ? " md:translate-x-14 md:translate-y-0 translate-y-14 w-fit"
-                  : "md:translate-x-10 md:translate-y-0 translate-y-10 w-0"
+                hover.driver ? " translate-x-14 w-fit" : "translate-x-10 w-0"
               }`}
             >
               Drivers
@@ -102,7 +97,7 @@ const SideBar = ({ setdrop, drop }) => {
           </Link>
         </li>
         <li
-          className="w-full"
+          className="w-full py-1"
           onMouseOver={() =>
             setHover((prev) => {
               return { ...prev, veh: true };
@@ -116,7 +111,7 @@ const SideBar = ({ setdrop, drop }) => {
         >
           <Link
             href={"/admin/vehicle"}
-            className={` flex md:flex-row flex-col items-center justify-start w-full p-3 px-4  ${
+            className={` flex items-center justify-start w-full p-3 px-4  ${
               hover.veh ? "text-primary" : "text-secondary"
             }`}
           >
@@ -128,9 +123,7 @@ const SideBar = ({ setdrop, drop }) => {
 
             <p
               className={`font-thin tracking-widest whitespace-nowrap font-rock text-sm duration-500 fixed z-50 overflow-hidden ${
-                hover.veh
-                  ? " md:translate-x-14 md:translate-y-0 translate-y-14 w-fit"
-                  : "md:translate-x-10 md:translate-y-0 translate-y-10 w-0"
+                hover.veh ? " translate-x-14 w-fit" : "translate-x-10 w-0"
               }`}
             >
               Vehicles
@@ -138,7 +131,7 @@ const SideBar = ({ setdrop, drop }) => {
           </Link>
         </li>
         <li
-          className="w-full"
+          className="w-full py-1"
           onMouseOver={() =>
             setHover((prev) => {
               return { ...prev, cs: true };
@@ -152,7 +145,7 @@ const SideBar = ({ setdrop, drop }) => {
         >
           <Link
             href={"/admin/customer"}
-            className={` flex md:flex-row flex-col items-center justify-start w-full p-3 px-4  ${
+            className={` flex items-center justify-start w-full p-3 px-4  ${
               hover.cs ? "text-primary" : "text-secondary"
             }`}
           >
@@ -164,54 +157,15 @@ const SideBar = ({ setdrop, drop }) => {
 
             <p
               className={`font-thin tracking-widest whitespace-nowrap font-rock text-sm duration-500 fixed z-50 overflow-hidden ${
-                hover.cs
-                  ? " md:translate-x-14 md:translate-y-0 translate-y-14 w-fit"
-                  : "md:translate-x-10 md:translate-y-0 translate-y-10 w-0"
+                hover.cs ? " translate-x-14 w-fit" : "translate-x-10 w-0"
               }`}
             >
               Customers
             </p>
           </Link>
         </li>
-
         <li
-          className="w-full"
-          onMouseOver={() =>
-            setHover((prev) => {
-              return { ...prev, book: true };
-            })
-          }
-          onMouseOut={() =>
-            setHover((prev) => {
-              return { ...prev, book: false };
-            })
-          }
-        >
-          <Link
-            href={"/admin/booking"}
-            className={` flex md:flex-row flex-col items-center justify-start w-full p-3 px-4  ${
-              hover.book ? "text-primary" : "text-secondary"
-            }`}
-          >
-            <BiSolidBookContent
-              className={`text-2xl drop-shadow-3xl duration-500 ${
-                hover.book && "scale-125"
-              }`}
-            />
-
-            <p
-              className={`font-thin tracking-widest whitespace-nowrap font-rock text-sm duration-500 fixed z-50 overflow-hidden ${
-                hover.book
-                  ? " md:translate-x-14 md:translate-y-0 translate-y-14 w-fit"
-                  : "md:translate-x-10 md:translate-y-0 translate-y-10 w-0"
-              }`}
-            >
-              Booking
-            </p>
-          </Link>
-        </li>
-        <li
-          className="w-full"
+          className="w-full py-1"
           onMouseOver={() =>
             setHover((prev) => {
               return { ...prev, trip: true };
@@ -225,7 +179,7 @@ const SideBar = ({ setdrop, drop }) => {
         >
           <Link
             href={"/admin/trip"}
-            className={` flex md:flex-row flex-col items-center justify-start w-full p-3 px-4  ${
+            className={` flex items-center justify-start w-full p-3 px-4  ${
               hover.trip ? "text-primary" : "text-secondary"
             }`}
           >
@@ -237,9 +191,7 @@ const SideBar = ({ setdrop, drop }) => {
 
             <p
               className={`font-thin tracking-widest whitespace-nowrap font-rock text-sm duration-500 fixed z-50 overflow-hidden ${
-                hover.trip
-                  ? " md:translate-x-14 md:translate-y-0 translate-y-14 w-fit"
-                  : "md:translate-x-10 md:translate-y-0 translate-y-10 w-0"
+                hover.trip ? " translate-x-14 w-fit" : "translate-x-10 w-0"
               }`}
             >
               Trips
@@ -247,7 +199,41 @@ const SideBar = ({ setdrop, drop }) => {
           </Link>
         </li>
         <li
-          className="w-full"
+          className="w-full py-1"
+          onMouseOver={() =>
+            setHover((prev) => {
+              return { ...prev, book: true };
+            })
+          }
+          onMouseOut={() =>
+            setHover((prev) => {
+              return { ...prev, book: false };
+            })
+          }
+        >
+          <Link
+            href={"/admin/booking"}
+            className={` flex items-center justify-start w-full p-3 px-4  ${
+              hover.book ? "text-primary" : "text-secondary"
+            }`}
+          >
+            <BiSolidBookContent
+              className={`text-2xl drop-shadow-3xl duration-500 ${
+                hover.book && "scale-125"
+              }`}
+            />
+
+            <p
+              className={`font-thin tracking-widest whitespace-nowrap font-rock text-sm duration-500 fixed z-50 overflow-hidden ${
+                hover.book ? " translate-x-14 w-fit" : "translate-x-10 w-0"
+              }`}
+            >
+              Booking
+            </p>
+          </Link>
+        </li>
+        <li
+          className="w-full py-1"
           onMouseOver={() =>
             setHover((prev) => {
               return { ...prev, lt: true };
@@ -261,7 +247,7 @@ const SideBar = ({ setdrop, drop }) => {
         >
           <Link
             href={"/admin/lt"}
-            className={` flex md:flex-row flex-col items-center justify-start w-full p-3 px-4  ${
+            className={` flex items-center justify-start w-full p-3 px-4  ${
               hover.lt ? "text-primary" : "text-secondary"
             }`}
           >
@@ -273,9 +259,7 @@ const SideBar = ({ setdrop, drop }) => {
 
             <p
               className={`font-thin tracking-widest whitespace-nowrap font-rock text-sm duration-500 fixed z-50 overflow-hidden ${
-                hover.lt
-                  ? " md:translate-x-14 md:translate-y-0 translate-y-14 w-fit"
-                  : "md:translate-x-10 md:translate-y-0 translate-y-10 w-0"
+                hover.lt ? " translate-x-14 w-fit" : "translate-x-10 w-0"
               }`}
             >
               Live Tracking
@@ -283,7 +267,7 @@ const SideBar = ({ setdrop, drop }) => {
           </Link>
         </li>
         <li
-          className="w-full"
+          className="w-full py-1"
           onMouseOver={() =>
             setHover((prev) => {
               return { ...prev, fe: true };
@@ -297,7 +281,7 @@ const SideBar = ({ setdrop, drop }) => {
         >
           <Link
             href={"/admin/fuel"}
-            className={` flex md:flex-row flex-col items-center justify-start w-full p-3 px-4  ${
+            className={` flex items-center justify-start w-full p-3 px-4  ${
               hover.fe ? "text-primary" : "text-secondary"
             }`}
           >
@@ -309,9 +293,7 @@ const SideBar = ({ setdrop, drop }) => {
 
             <p
               className={`font-thin tracking-widest whitespace-nowrap font-rock text-sm duration-500 fixed z-50 overflow-hidden ${
-                hover.fe
-                  ? " md:translate-x-14 md:translate-y-0 translate-y-14 w-fit"
-                  : "md:translate-x-10 md:translate-y-0 translate-y-10 w-0"
+                hover.fe ? " translate-x-14 w-fit" : "translate-x-10 w-0"
               }`}
             >
               Fuel Records
@@ -319,7 +301,7 @@ const SideBar = ({ setdrop, drop }) => {
           </Link>
         </li>
         <li
-          className="w-full"
+          className="w-full py-1"
           onMouseOver={() =>
             setHover((prev) => {
               return { ...prev, mn: true };
@@ -333,7 +315,7 @@ const SideBar = ({ setdrop, drop }) => {
         >
           <Link
             href={"/admin/maintenance"}
-            className={` flex md:flex-row flex-col items-center justify-start w-full p-3 px-4  ${
+            className={` flex items-center justify-start w-full p-3 px-4  ${
               hover.mn ? "text-primary" : "text-secondary"
             }`}
           >
@@ -345,9 +327,7 @@ const SideBar = ({ setdrop, drop }) => {
 
             <p
               className={`font-thin tracking-widest whitespace-nowrap font-rock text-sm duration-500 fixed z-50 overflow-hidden ${
-                hover.mn
-                  ? " md:translate-x-14 md:translate-y-0 translate-y-14 w-fit"
-                  : "md:translate-x-10 md:translate-y-0 translate-y-10 w-0"
+                hover.mn ? " translate-x-14 w-fit" : "translate-x-10 w-0"
               }`}
             >
               Maintenances
@@ -355,7 +335,7 @@ const SideBar = ({ setdrop, drop }) => {
           </Link>
         </li>
         <li
-          className="w-full"
+          className="w-full py-1"
           onMouseOver={() =>
             setHover((prev) => {
               return { ...prev, ex: true };
@@ -369,7 +349,7 @@ const SideBar = ({ setdrop, drop }) => {
         >
           <Link
             href={"/admin/expense"}
-            className={` flex md:flex-row flex-col items-center justify-start w-full p-3 px-4  ${
+            className={` flex items-center justify-start w-full p-3 px-4  ${
               hover.ex ? "text-primary" : "text-secondary"
             }`}
           >
@@ -381,9 +361,7 @@ const SideBar = ({ setdrop, drop }) => {
 
             <p
               className={`font-thin tracking-widest whitespace-nowrap font-rock text-sm duration-500 fixed z-50 overflow-hidden ${
-                hover.ex
-                  ? " md:translate-x-14 md:translate-y-0 translate-y-14 w-fit"
-                  : "md:translate-x-10 md:translate-y-0 translate-y-10 w-0"
+                hover.ex ? " translate-x-14 w-fit" : "translate-x-10 w-0"
               }`}
             >
               Expenses
@@ -391,7 +369,7 @@ const SideBar = ({ setdrop, drop }) => {
           </Link>
         </li>
         <li
-          className="w-full"
+          className="w-full py-1"
           onMouseOver={() =>
             setHover((prev) => {
               return { ...prev, us: true };
@@ -405,7 +383,7 @@ const SideBar = ({ setdrop, drop }) => {
         >
           <Link
             href={"/admin/user"}
-            className={` flex md:flex-row flex-col items-center justify-start w-full p-3 px-4  ${
+            className={` flex items-center justify-start w-full p-3 px-4  ${
               hover.us ? "text-primary" : "text-secondary"
             }`}
           >
@@ -417,44 +395,12 @@ const SideBar = ({ setdrop, drop }) => {
 
             <p
               className={`font-thin tracking-widest whitespace-nowrap font-rock text-sm duration-500 fixed z-50 overflow-hidden ${
-                hover.us
-                  ? " md:translate-x-14 md:translate-y-0 translate-y-14 w-fit"
-                  : "md:translate-x-10 md:translate-y-0 translate-y-10 w-0"
+                hover.us ? " translate-x-14 w-fit" : "translate-x-10 w-0"
               }`}
             >
               Users
             </p>
           </Link>
-        </li>
-        <li
-          className="w-full md:hidden block z-50"
-          onMouseOver={() =>
-            setHover((prev) => {
-              return { ...prev, log: true };
-            })
-          }
-          onMouseOut={() =>
-            setHover((prev) => {
-              return { ...prev, log: false };
-            })
-          }
-        >
-          <div
-            className={` flex md:flex-row flex-col items-center justify-start w-full p-3 px-4 z-50 ${
-              hover.log ? "text-primary" : "text-secondary"
-            }`}
-          >
-            <Header setdrop={setdrop} drop={drop} />
-            <p
-              className={`font-thin tracking-widest whitespace-nowrap font-rock text-sm duration-500 fixed z-50 overflow-hidden ${
-                hover.log
-                  ? " md:translate-x-14 md:translate-y-0 translate-y-14 w-fit"
-                  : "md:translate-x-10 md:translate-y-0 translate-y-10 w-0"
-              }`}
-            >
-              User info
-            </p>
-          </div>
         </li>
       </ul>
     </div>
