@@ -141,6 +141,7 @@ const DashBody = () => {
         <div className=" md:h-full grid grid-cols-2 grid-rows-2 w-[100px] md:w-full m-3">
           {waffleChartData && (
             <>
+              <LineCharter />
               <BarCharter />
               <WaffleChart data={waffleChartData} />
             </>
