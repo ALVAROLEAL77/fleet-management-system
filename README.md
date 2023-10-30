@@ -6,8 +6,6 @@ This **Fleet Management System** is a robust one-of-a-kind software solution I d
 
 ## Technologies Used
 
-Our Fleet Management System leverages a combination of cutting-edge technologies to provide a robust and efficient solution:
-
 - **NEXTJS:** A React framework for building fast and dynamic web applications.
 - **JSX:** JavaScript XML for creating user interfaces.
 - **TAILWINDCSS:** A utility-first CSS framework for flexible and responsive design.
@@ -34,8 +32,6 @@ The Fleet Management System comprises the following database tables:
 | UserRoles          | Defines different user roles and their permissions within the system.                               | Postgres      |
 | Users              | Stores user profiles, including administrators, managers, and other system users.                   | Postgres      |
 | Vehicles           | Contains vehicle information, including make, model, registration details, and maintenance history. | Postgres      |
-
-These tables work in concert to provide a comprehensive solution for managing a fleet of vehicles, enhancing operational efficiency, and enabling data-driven decision-making.
 
 ## Installation
 
@@ -92,75 +88,84 @@ To set up the Fleet Management System, follow these straightforward installation
 
 #### Bookings
 
-| Method | Route             | Description                                  |
-| ------ | ----------------- | -------------------------------------------- |
-| GET    | /api/booking      | Retrieve a list of all booking records.      |
-| POST   | /api/booking      | Create a new booking record.                 |
-| DELETE | /api/booking/[id] | Delete a specific booking record by its ID.  |
-| PUT    | /api/booking/[id] | Update an existing booking record by its ID. |
+| Method | Route             | Description                                   |
+| ------ | ----------------- | --------------------------------------------- |
+| GET    | /api/booking      | Retrieve a list of all booking records.       |
+| POST   | /api/booking      | Create a new booking record.                  |
+| DELETE | /api/booking/[id] | Delete a specific booking record by its ID.   |
+| PUT    | /api/booking/[id] | Update an existing booking record by its ID.  |
+| GET    | /api/booking/[id] | Retieve an existing booking record by its ID. |
 
 #### Customers
 
-| Method | Route              | Description                                   |
-| ------ | ------------------ | --------------------------------------------- |
-| GET    | /api/customer      | Retrieve a list of all customer records.      |
-| POST   | /api/customer      | Create a new customer record.                 |
-| DELETE | /api/customer/[id] | Delete a specific customer record by its ID.  |
-| PUT    | /api/customer/[id] | Update an existing customer record by its ID. |
+| Method | Route              | Description                                     |
+| ------ | ------------------ | ----------------------------------------------- |
+| GET    | /api/customer      | Retrieve a list of all customer records.        |
+| POST   | /api/customer      | Create a new customer record.                   |
+| DELETE | /api/customer/[id] | Delete a specific customer record by its ID.    |
+| PUT    | /api/customer/[id] | Update an existing customer record by its ID.   |
+| GET    | /api/customer/[id] | Retrieve an existing customer record by its ID. |
 
 #### Drivers
 
-| Method | Route            | Description                                 |
-| ------ | ---------------- | ------------------------------------------- |
-| GET    | /api/driver      | Retrieve a list of all driver records.      |
-| POST   | /api/driver      | Create a new driver record.                 |
-| DELETE | /api/driver/[id] | Delete a specific driver record by its ID.  |
-| PUT    | /api/driver/[id] | Update an existing driver record by its ID. |
+| Method | Route            | Description                                   |
+| ------ | ---------------- | --------------------------------------------- |
+| GET    | /api/driver      | Retrieve a list of all driver records.        |
+| POST   | /api/driver      | Create a new driver record.                   |
+| DELETE | /api/driver/[id] | Delete a specific driver record by its ID.    |
+| PUT    | /api/driver/[id] | Update an existing driver record by its ID.   |
+| GET    | /api/driver/[id] | Retrieve an existing driver record by its ID. |
 
 #### Vehicles
 
-| Method | Route             | Description                                  |
-| ------ | ----------------- | -------------------------------------------- |
-| GET    | /api/vehicle      | Retrieve a list of all vehicle records.      |
-| POST   | /api/vehicle      | Create a new vehicle record.                 |
-| DELETE | /api/vehicle/[id] | Delete a specific vehicle record by its ID.  |
-| PUT    | /api/vehicle/[id] | Update an existing vehicle record by its ID. |
+| Method | Route             | Description                                    |
+| ------ | ----------------- | ---------------------------------------------- |
+| GET    | /api/vehicle      | Retrieve a list of all vehicle records.        |
+| POST   | /api/vehicle      | Create a new vehicle record.                   |
+| DELETE | /api/vehicle/[id] | Delete a specific vehicle record by its ID.    |
+| PUT    | /api/vehicle/[id] | Update an existing vehicle record by its ID.   |
+| GET    | /api/vehicle/[id] | Retrieve an existing vehicle record by its ID. |
 
 #### Expenses
 
-| Method | Route             | Description                                  |
-| ------ | ----------------- | -------------------------------------------- |
-| GET    | /api/expense      | Retrieve a list of all expense records.      |
-| POST   | /api/expense      | Create a new expense record.                 |
-| DELETE | /api/expense/[id] | Delete a specific expense record by its ID.  |
-| PUT    | /api/expense/[id] | Update an existing expense record by its ID. |
+| Method | Route             | Description                                    |
+| ------ | ----------------- | ---------------------------------------------- |
+| GET    | /api/expense      | Retrieve a list of all expense records.        |
+| POST   | /api/expense      | Create a new expense record.                   |
+| DELETE | /api/expense/[id] | Delete a specific expense record by its ID.    |
+| PUT    | /api/expense/[id] | Update an existing expense record by its ID.   |
+| GET    | /api/expense/[id] | Retrieve an existing expense record by its ID. |
+| POST   | /api/expense/[id] | Create an existing expense record by its ID.   |
 
 #### Fueling Records
 
-| Method | Route                   | Description                                        |
-| ------ | ----------------------- | -------------------------------------------------- |
-| GET    | /api/fuelingrecord      | Retrieve a list of all fueling record entries.     |
-| POST   | /api/fuelingrecord      | Create a new fueling record entry.                 |
-| DELETE | /api/fuelingrecord/[id] | Delete a specific fueling record entry by its ID.  |
-| PUT    | /api/fuelingrecord/[id] | Update an existing fueling record entry by its ID. |
+| Method | Route                   | Description                                          |
+| ------ | ----------------------- | ---------------------------------------------------- |
+| GET    | /api/fuelingrecord      | Retrieve a list of all fueling record entries.       |
+| POST   | /api/fuelingrecord      | Create a new fueling record entry.                   |
+| DELETE | /api/fuelingrecord/[id] | Delete a specific fueling record entry by its ID.    |
+| PUT    | /api/fuelingrecord/[id] | Update an existing fueling record entry by its ID.   |
+| GET    | /api/fuelingrecord/[id] | Retrieve an existing fueling record entry by its ID. |
 
 #### Maintenance Records
 
-| Method | Route                       | Description                                            |
-| ------ | --------------------------- | ------------------------------------------------------ |
-| GET    | /api/maintenancerecord      | Retrieve a list of all maintenance record entries.     |
-| POST   | /api/maintenancerecord      | Create a new maintenance record entry.                 |
-| DELETE | /api/maintenancerecord/[id] | Delete a specific maintenance record entry by its ID.  |
-| PUT    | /api/maintenancerecord/[id] | Update an existing maintenance record entry by its ID. |
+| Method | Route                       | Description                                              |
+| ------ | --------------------------- | -------------------------------------------------------- |
+| GET    | /api/maintenancerecord      | Retrieve a list of all maintenance record entries.       |
+| POST   | /api/maintenancerecord      | Create a new maintenance record entry.                   |
+| DELETE | /api/maintenancerecord/[id] | Delete a specific maintenance record entry by its ID.    |
+| PUT    | /api/maintenancerecord/[id] | Update an existing maintenance record entry by its ID.   |
+| GET    | /api/maintenancerecord/[id] | Retrieve an existing maintenance record entry by its ID. |
 
 #### Trips
 
-| Method | Route          | Description                               |
-| ------ | -------------- | ----------------------------------------- |
-| GET    | /api/trip      | Retrieve a list of all trip records.      |
-| POST   | /api/trip      | Create a new trip record.                 |
-| DELETE | /api/trip/[id] | Delete a specific trip record by its ID.  |
-| PUT    | /api/trip/[id] | Update an existing trip record by its ID. |
+| Method | Route          | Description                                 |
+| ------ | -------------- | ------------------------------------------- |
+| GET    | /api/trip      | Retrieve a list of all trip records.        |
+| POST   | /api/trip      | Create a new trip record.                   |
+| DELETE | /api/trip/[id] | Delete a specific trip record by its ID.    |
+| PUT    | /api/trip/[id] | Update an existing trip record by its ID.   |
+| GET    | /api/trip/[id] | Retrieve an existing trip record by its ID. |
 
 #### User Roles
 
@@ -170,6 +175,7 @@ To set up the Fleet Management System, follow these straightforward installation
 | POST   | /api/userrole      | Create a new user role record.                |
 | DELETE | /api/userrole/[id] | Delete a specific user role record by its ID. |
 | PUT    | /api/userrole/[id] | Update an existing user role record by        |
+| GET    | /api/userrole/[id] | Retrieve an existing user role record by      |
 
 #### Users
 
@@ -179,6 +185,7 @@ To set up the Fleet Management System, follow these straightforward installation
 | POST   | /api/user      | Create a new user record.                |
 | DELETE | /api/user/[id] | Delete a specific user record by its ID. |
 | PUT    | /api/user/[id] | Update an existing user record by        |
+| GET    | /api/user/[id] | Retrieve an existing user record by      |
 
 ### Authorized Routes
 

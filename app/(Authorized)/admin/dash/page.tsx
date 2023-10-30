@@ -82,7 +82,7 @@ const DashBody = () => {
 
   return (
     <>
-      <div className="grid md:grid-cols-3 gap-y-10 grid-cols-1 md:py-4 md:px-0 m-6 md:m-0 md:mt-1  rounded-bl-3xl rounded-br-3xl md:w-full rounded-xl border-double border-secondary border-2 backdrop-blur-lg shadow-md shadow-secondary">
+      <div className="grid md:grid-cols-3 gap-y-10 grid-cols-1 md:py-4 md:px-0 md:m-0 md:mt-1  rounded-bl-3xl rounded-br-3xl md:w-full rounded-xl border-double border-secondary border-2 backdrop-blur-lg shadow-md shadow-secondary mt-20">
         <div className=" flex flex-col md:items-start items-center p-16 md:p-auto gap-5 justify-center h-[300px]">
           <h4 className="md:text-lg text-sm font-bold font-rock tracking-widest flex items-center gap-2 text-secondary px-1">
             <ImClock />
@@ -98,7 +98,7 @@ const DashBody = () => {
             Welcome Back, {session?.user?.firstName}
           </h1>
         </div>
-        <div className="md:col-span-2 mr-2">
+        <div className="md:col-span-2">
           <DashMap isLoaded={isLoaded} />
         </div>
       </div>
@@ -138,7 +138,7 @@ const DashBody = () => {
         <h1 className="md:text-4xl text-4xl  font-bold font-rock tracking-widest p-5 uppercase text-secondary break-words break-all drop-shadow-[0px_3px_10px_rgba(82,109,130,1)]">
           Analytics
         </h1>
-        <div className=" md:h-full grid grid-cols-2 grid-rows-2 w-[100px] md:w-full m-3">
+        <div className=" md:h-full grid md:grid-cols-2 md:grid-rows-2 grid-cols-1 w-full m-3">
           {waffleChartData && (
             <>
               <LineCharter />

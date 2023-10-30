@@ -54,12 +54,12 @@ const Create = ({ refetch }) => {
           <PiPlusSquareDuotone className="text-lg text-secondary" />
         </Button>
       </DialogTrigger>
-      <DialogContent className="min-w-[650px] drop-shadow-2xl">
+      <DialogContent className="md:min-w-[650px] min-w-full drop-shadow-2xl">
         <DialogHeader>
           <DialogTitle className="font-rock text-primary">
             Create Expense
           </DialogTitle>
-          <DialogDescription className="font-rock pt-4 flex justify-evenly items-start  w-fit">
+          <DialogDescription className="font-rock pt-4 flex justify-evenly items-start  md:flex-nowrap flex-wrap w-fit">
             <FaMoneyBills
               className={`text-6xl text-secondary m-10 drop-shadow-[5px_20px_30px_rgba(82,109,130,1)]`}
             />
@@ -85,7 +85,8 @@ const Create = ({ refetch }) => {
             >
               <Form className="flex flex-col justify-center items-center">
                 <div className="flex flex-col justify-start items-start flex-wrap h-[320px]">
-                  <div className="m-3 h-20 w-48">
+                  <div className="md:m-3 h-20 w-48">
+                    {" "}
                     <label>Vehicle</label>
                     <Multiselect
                       options={options}
@@ -136,7 +137,8 @@ const Create = ({ refetch }) => {
                       {!selectedOptions[0] && "Select a Vehicle"}
                     </p>
                   </div>
-                  <div className="m-3 h-20 w-48">
+                  <div className="md:m-3 h-20 w-48">
+                    {" "}
                     <label>Expense Type</label>
                     <Field
                       className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
@@ -149,7 +151,8 @@ const Create = ({ refetch }) => {
                       component="div"
                     />
                   </div>
-                  <div className="m-3 h-20 w-48">
+                  <div className="md:m-3 h-20 w-48">
+                    {" "}
                     <label>Expense Date</label>
                     <Field
                       className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
@@ -162,7 +165,8 @@ const Create = ({ refetch }) => {
                       component="div"
                     />
                   </div>
-                  <div className="m-3 h-20 w-48">
+                  <div className="md:m-3 h-20 w-48">
+                    {" "}
                     <label>Amount</label>
                     <Field
                       className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
@@ -175,7 +179,8 @@ const Create = ({ refetch }) => {
                       component="div"
                     />
                   </div>
-                  <div className="m-3 h-20 w-48">
+                  <div className="md:m-3 h-20 w-48">
+                    {" "}
                     <label>Description</label>
                     <Field
                       className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"

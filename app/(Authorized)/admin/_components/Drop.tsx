@@ -2,11 +2,12 @@ import { BsPersonFill } from "react-icons/bs";
 import { IoMdLogOut } from "react-icons/io";
 import Modal from "./Modal";
 import { signOut } from "next-auth/react";
+import { MdOutlinePersonOutline } from "react-icons/md";
 //@ts-ignore
 const Drop = ({ drop }) => {
   return (
     <div
-      className={`absolute w-40 right-2 md:top-14 top-28 font-rock font-thin tracking-widest  transition-all duration-300 ${
+      className={`absolute md:block hidden w-40 right-8 md:top-26 top-28 font-rock font-thin tracking-widest  transition-all duration-300 ${
         drop
           ? "translate-y-0 opacity-100 visible"
           : "-translate-y-4 opacity-0 invisible"
@@ -14,7 +15,7 @@ const Drop = ({ drop }) => {
     >
       <div className="bg-transparent backdrop-blur-md !border-double border-secondary border-4 shadow-lg mb-6 rounded-2xl flex flex-col justify-center p-1">
         <div className="text-primary flex justify-between p-2">
-          <BsPersonFill className="text-primary text-3xl self-center" />
+          <MdOutlinePersonOutline className="text-primary text-3xl self-center" />
           <p>Admin</p>
         </div>
         <hr className="!border-double border-secondary border-2 rounded-full" />

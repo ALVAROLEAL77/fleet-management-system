@@ -53,7 +53,7 @@ const WaffleChart = ({ data }) => {
     );
   };
   return (
-    <div className="mb-6 m-3 rounded-2xl border-double border-secondary border-2 backdrop-blur-3xl shadow-md shadow-secondary">
+    <div className="mb-6 m-3  rounded-2xl border-double border-secondary border-2 backdrop-blur-3xl shadow-md shadow-secondary">
       {" "}
       {data ? (
         <>

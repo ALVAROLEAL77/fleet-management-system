@@ -95,12 +95,12 @@ const Update = ({ id, refetch }) => {
           <PiRecycleDuotone className="text-green-800  text-2xl cursor-pointer" />
         </DialogTrigger>
         {value && (
-          <DialogContent className="min-w-[650px] drop-shadow-2xl">
+          <DialogContent className="md:min-w-[650px] min-w-full drop-shadow-2xl">
             <DialogHeader>
               <DialogTitle className="font-rock text-primary">
                 Update Vehicle
               </DialogTitle>
-              <DialogDescription className="font-rock pt-4 flex justify-evenly items-start  w-fit">
+              <DialogDescription className="font-rock pt-4 flex justify-evenly items-start  md:flex-nowrap flex-wrap w-fit">
                 <BiSolidBookContent
                   className={`text-6xl text-secondary m-10 drop-shadow-[5px_20px_30px_rgba(82,109,130,1)]`}
                 />
@@ -143,7 +143,8 @@ const Update = ({ id, refetch }) => {
                   }) => (
                     <Form className="flex flex-col justify-center items-center">
                       <div className="flex flex-col justify-start items-start flex-wrap h-[320px]">
-                        <div className="m-3 h-20 w-48">
+                        <div className="md:m-3 h-20 w-48">
+                          {" "}
                           <label>Customer</label>
                           <Multiselect
                             options={options}
@@ -195,7 +196,8 @@ const Update = ({ id, refetch }) => {
                           </p>
                         </div>
 
-                        <div className="m-3 h-20 w-48">
+                        <div className="md:m-3 h-20 w-48">
+                          {" "}
                           <label>Booking Date</label>
                           <Field
                             className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
@@ -208,7 +210,7 @@ const Update = ({ id, refetch }) => {
                             component="div"
                           />
                         </div>
-                        <div className="m-3 h-20 w-48 z-30">
+                        <div className="md:m-3 h-20 w-48 z-30">
                           <label>Start Location </label>
                           <Search
                             setFieldValue={setFieldValue}
@@ -222,7 +224,7 @@ const Update = ({ id, refetch }) => {
                           />
                         </div>
 
-                        <div className="m-3 h-20 w-48 z-30">
+                        <div className="md:m-3 h-20 w-48 z-30">
                           <label>End Location</label>
                           <Search
                             setFieldValue={setFieldValue}
@@ -235,7 +237,8 @@ const Update = ({ id, refetch }) => {
                             component="div"
                           />
                         </div>
-                        <div className="m-3 h-20 w-48">
+                        <div className="md:m-3 h-20 w-48">
+                          {" "}
                           <label>Trip Purpose</label>
                           <Field
                             className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
@@ -248,7 +251,8 @@ const Update = ({ id, refetch }) => {
                             component="div"
                           />
                         </div>
-                        <div className="m-3 h-20 w-48">
+                        <div className="md:m-3 h-20 w-48">
+                          {" "}
                           <label>Status</label>
                           <Field
                             className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"

@@ -43,7 +43,7 @@ const Create = ({ refetch }) => {
           <DialogTitle className="font-rock text-primary">
             Create User Role
           </DialogTitle>
-          <DialogDescription className="font-rock pt-4 flex justify-evenly items-start  w-fit">
+          <DialogDescription className="font-rock pt-4 flex justify-evenly items-start  md:flex-nowrap flex-wrap w-fit">
             <FaUserShield
               className={`text-6xl text-secondary m-10 drop-shadow-[5px_20px_30px_rgba(82,109,130,1)]`}
             />
@@ -61,7 +61,8 @@ const Create = ({ refetch }) => {
             >
               <Form className="flex flex-col justify-center items-center">
                 <div className="flex flex-col justify-start items-start flex-wrap h-[240px]">
-                  <div className="m-3 h-20 w-48">
+                  <div className="md:m-3 h-20 w-48">
+                    {" "}
                     <label>Role Name</label>
                     <Field
                       className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
