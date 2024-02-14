@@ -1,20 +1,11 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Fleet Management System
 
-## Getting Started
+## Overview
 
-First, run the development server:
+This **Fleet Management System** is a robust one-of-a-kind software solution I designed to streamline the management of vehicle fleets. It seamlessly integrates a set of interconnected tables, each dedicated to specific aspects of fleet operations. My system empowers businesses with real-time tracking, optimized scheduling, and data-driven decision-making, enabling them to enhance operational efficiency, reduce costs, and deliver outstanding customer service while safeguarding the safety and maintenance of their fleet. This holistic approach propels businesses toward success and sustained growth.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Technologies Used
 
-<<<<<<< HEAD
 - **NEXTJS:** A React framework for building fast and dynamic web applications.
 - **JSX:** JavaScript XML for creating user interfaces.
 - **TAILWINDCSS:** A utility-first CSS framework for flexible and responsive design.
@@ -24,32 +15,30 @@ bun dev
 - **NEXT-AUTH:** For secure authentication and user management.
 - **SEQUELIZE & PSQL:** Tools for efficient database management.
 - **GOOGLE MAPS API:** For advanced geolocation and mapping features.
-=======
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
->>>>>>> parent of 796a4e5 (fix: previous commit didnt contain a custom README.md.)
+## Database Tables
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+The Fleet Management System comprises the following database tables:
 
-## Learn More
+| Table Name         | Description                                                                                         | Database Type |
+| ------------------ | --------------------------------------------------------------------------------------------------- | ------------- |
+| Bookings           | Stores data related to vehicle reservations and scheduling.                                         | Postgres      |
+| Customers          | Manages customer data, enabling effective customer relationship management.                         | Postgres      |
+| Drivers            | Maintains driver profiles, including personal information, licenses, and contact details.           | Postgres      |
+| Expenses           | Tracks financial data related to fleet maintenance and operational costs.                           | Postgres      |
+| FuelingRecords     | Logs fueling transactions to monitor fuel consumption, costs, and fleet efficiency.                 | Postgres      |
+| MaintenanceRecords | Keeps records of vehicle maintenance and service to ensure vehicles are well-maintained and safe.   | Postgres      |
+| Trips              | Records trip details, including start and end times, distances traveled, and routes taken.          | Postgres      |
+| UserRoles          | Defines different user roles and their permissions within the system.                               | Postgres      |
+| Users              | Stores user profiles, including administrators, managers, and other system users.                   | Postgres      |
+| Vehicles           | Contains vehicle information, including make, model, registration details, and maintenance history. | Postgres      |
 
-To learn more about Next.js, take a look at the following resources:
-
-<<<<<<< HEAD
 ## Installation
-=======
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
->>>>>>> parent of 796a4e5 (fix: previous commit didnt contain a custom README.md.)
+To set up the Fleet Management System, follow these straightforward installation steps:
 
-## Deploy on Vercel
+1. Clone the repository:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-<<<<<<< HEAD
    ```shell
    git clone https://github.com/yaseressa/fleet-management-system
    ```
@@ -205,6 +194,3 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 | Method | Route                   | Description                              |
 | ------ | ----------------------- | ---------------------------------------- |
 | GET    | /api/auth/[...nextauth] | Handles all the auth related operations. |
-=======
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
->>>>>>> parent of 796a4e5 (fix: previous commit didnt contain a custom README.md.)
