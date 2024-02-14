@@ -57,7 +57,7 @@ const WaffleChart = ({ data }) => {
       {" "}
       {data ? (
         <>
-          <h1 className="font-rock font-extralight uppercase text-secondary px-2 text-center text-lg">
+          <h1 className="font-rock font-extralight uppercase text-primary px-2 text-center text-lg">
             DISTRIBUTIONS
           </h1>
           <div className="w-full flex justify-center items-start">

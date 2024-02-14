@@ -27,7 +27,7 @@ const Update = ({ id, refetch }) => {
 
   const get = () => {
     if (id != undefined) {
-      fetch(process.env.NEXT_PUBLIC_APP_URL + `api/vehicle/${id}`, {
+      fetch(process.env.NEXT_PUBLIC_APP_URL + `vehicle/${id}`, {
         next: { revalidate: 0 },
       })
         .then((res) => res.json())
@@ -37,7 +37,7 @@ const Update = ({ id, refetch }) => {
 
   const initialValues = value && value;
   const onSubmit = (value, id) => {
-    fetch(process.env.NEXT_PUBLIC_APP_URL + `api/vehicle/${id}`, {
+    fetch(process.env.NEXT_PUBLIC_APP_URL + `vehicle/${id}`, {
       method: "put",
       body: JSON.stringify(value),
       next: { revalidate: 0 },
@@ -64,7 +64,7 @@ const Update = ({ id, refetch }) => {
               </DialogTitle>
               <DialogDescription className="font-rock pt-4 flex justify-evenly items-start  md:flex-nowrap flex-wrap w-fit">
                 <PiCarFill
-                  className={`text-6xl text-secondary m-10 drop-shadow-[5px_20px_30px_rgba(82,109,130,1)]`}
+                  className={`text-6xl text-primary m-10 drop-shadow-[5px_20px_30px_rgba(82,109,130,1)]`}
                 />
 
                 <Formik
@@ -110,9 +110,9 @@ const Update = ({ id, refetch }) => {
                         <div className="flex flex-col justify-start items-start flex-wrap  h-[320px]">
                           <div className="md:m-3 h-20 w-48">
                             {" "}
-                            <label>Vehicle Type</label>
+                            <label className="text-primary">Vehicle Type</label>
                             <Field
-                              className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background "
+                              className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background text-primary "
                               type="text"
                               name="vehicleType"
                             />
@@ -124,9 +124,9 @@ const Update = ({ id, refetch }) => {
                           </div>
                           <div className="md:m-3 h-20 w-48">
                             {" "}
-                            <label>Vehicle Make</label>
+                            <label className="text-primary">Vehicle Make</label>
                             <Field
-                              className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background "
+                              className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background text-primary "
                               type="text"
                               name="vehicleMake"
                             />
@@ -138,9 +138,11 @@ const Update = ({ id, refetch }) => {
                           </div>
                           <div className="md:m-3 h-20 w-48">
                             {" "}
-                            <label>Vehicle Model</label>
+                            <label className="text-primary">
+                              Vehicle Model
+                            </label>
                             <Field
-                              className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background "
+                              className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background text-primary "
                               type="text"
                               name="vehicleModel"
                             />
@@ -152,9 +154,11 @@ const Update = ({ id, refetch }) => {
                           </div>
                           <div className="md:m-3 h-20 w-48">
                             {" "}
-                            <label>Vehicle License Plate</label>
+                            <label className="text-primary">
+                              Vehicle License Plate
+                            </label>
                             <Field
-                              className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background "
+                              className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background text-primary "
                               type="text"
                               name="vehicleLicensePlate"
                             />
@@ -165,10 +169,13 @@ const Update = ({ id, refetch }) => {
                             />
                           </div>
                           <div className="md:m-3 h-20 w-48 z-30">
-                            <label>Current Location</label>
+                            <label className="text-primary">
+                              Current Location
+                            </label>
                             <Search
                               setSelected={setSelected}
                               setFieldValue={setFieldValue}
+                              defaultValue={values.currentLocationName}
                               name={"currentLocationName"}
                             />
                             <ErrorMessage
@@ -180,9 +187,9 @@ const Update = ({ id, refetch }) => {
 
                           <div className="md:m-3 h-20 w-48">
                             {" "}
-                            <label>Status</label>
+                            <label className="text-primary">Status</label>
                             <Field
-                              className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background "
+                              className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background text-primary "
                               name="status"
                               component="select"
                             >
@@ -203,8 +210,8 @@ const Update = ({ id, refetch }) => {
                           type="submit"
                           className="border-double bg-transparent border-secondary border-2 backdrop-blur-3xl flex justify-between gap-2 px-6"
                         >
-                          <PiCarFill className={`text-xl text-secondary`} />
-                          <PiPlusSquareDuotone className="text-lg text-secondary" />
+                          <PiCarFill className={`text-xl text-primary`} />
+                          <PiPlusSquareDuotone className="text-lg text-primary" />
                         </Button>{" "}
                       </Form>
                     );

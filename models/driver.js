@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Driver.hasMany(models.Trip, { foreignKey: "driverId" });
+      Driver.hasOne(models.User, { foreignKey: "driverId" });
     }
   }
   Driver.init(

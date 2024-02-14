@@ -15,7 +15,7 @@ const Drop = ({ drop }) => {
     >
       <div className="bg-transparent backdrop-blur-md !border-double border-secondary border-4 shadow-lg mb-6 rounded-2xl flex flex-col justify-center p-1">
         <div className="text-primary flex justify-between p-2">
-          <MdOutlinePersonOutline className="text-primary text-3xl self-center" />
+          <MdOutlinePersonOutline className=" text-3xl self-center" />
           <p>Admin</p>
         </div>
         <hr className="!border-double border-secondary border-2 rounded-full" />

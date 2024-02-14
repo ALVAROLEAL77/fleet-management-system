@@ -20,7 +20,7 @@ const Create = ({ refetch }) => {
   const [options, setOptions] = useState([]);
 
   useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/vehicle")
+    fetch(process.env.NEXT_PUBLIC_APP_URL + "vehicle")
       .then((res) => res.json())
       .then((res) => {
         console.log("Vehicle Data:", res);
@@ -38,7 +38,7 @@ const Create = ({ refetch }) => {
       });
   }, []);
   const onSubmit = (value) => {
-    fetch(process.env.NEXT_PUBLIC_APP_URL + `api/expense`, {
+    fetch(process.env.NEXT_PUBLIC_APP_URL + `expense`, {
       method: "post",
       body: JSON.stringify(value),
       headers: { "Content-Types": "application/json" },
@@ -50,8 +50,8 @@ const Create = ({ refetch }) => {
     <Dialog onOpenChange={refetch}>
       <DialogTrigger>
         <Button className="border-double bg-transparent border-secondary border-2 backdrop-blur-3xl flex justify-between gap-2">
-          <FaMoneyBills className={`text-xl text-secondary`} />
-          <PiPlusSquareDuotone className="text-lg text-secondary" />
+          <FaMoneyBills className={`text-xl text-primary`} />
+          <PiPlusSquareDuotone className="text-lg text-primary" />
         </Button>
       </DialogTrigger>
       <DialogContent className="md:min-w-[650px] min-w-full drop-shadow-2xl">
@@ -61,7 +61,7 @@ const Create = ({ refetch }) => {
           </DialogTitle>
           <DialogDescription className="font-rock pt-4 flex justify-evenly items-start  md:flex-nowrap flex-wrap w-fit">
             <FaMoneyBills
-              className={`text-6xl text-secondary m-10 drop-shadow-[5px_20px_30px_rgba(82,109,130,1)]`}
+              className={`text-6xl text-primary m-10 drop-shadow-[5px_20px_30px_rgba(82,109,130,1)]`}
             />
 
             <Formik
@@ -87,7 +87,7 @@ const Create = ({ refetch }) => {
                 <div className="flex flex-col justify-start items-start flex-wrap h-[320px]">
                   <div className="md:m-3 h-20 w-48">
                     {" "}
-                    <label>Vehicle</label>
+                    <label className="text-primary">Vehicle</label>
                     <Multiselect
                       options={options}
                       selectedValues={selectedOptions}
@@ -139,9 +139,9 @@ const Create = ({ refetch }) => {
                   </div>
                   <div className="md:m-3 h-20 w-48">
                     {" "}
-                    <label>Expense Type</label>
+                    <label className="text-primary">Expense Type</label>
                     <Field
-                      className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
+                      className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background text-primary"
                       type="text"
                       name="expenseType"
                     />
@@ -153,9 +153,9 @@ const Create = ({ refetch }) => {
                   </div>
                   <div className="md:m-3 h-20 w-48">
                     {" "}
-                    <label>Expense Date</label>
+                    <label className="text-primary">Expense Date</label>
                     <Field
-                      className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
+                      className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background text-primary"
                       type="datetime-local"
                       name="expenseDate"
                     />
@@ -167,9 +167,9 @@ const Create = ({ refetch }) => {
                   </div>
                   <div className="md:m-3 h-20 w-48">
                     {" "}
-                    <label>Amount</label>
+                    <label className="text-primary">Amount</label>
                     <Field
-                      className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
+                      className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background text-primary"
                       type="number"
                       name="amount"
                     />
@@ -181,9 +181,9 @@ const Create = ({ refetch }) => {
                   </div>
                   <div className="md:m-3 h-20 w-48">
                     {" "}
-                    <label>Description</label>
+                    <label className="text-primary">Description</label>
                     <Field
-                      className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
+                      className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background text-primary"
                       type="text"
                       name="description"
                     />
@@ -198,8 +198,8 @@ const Create = ({ refetch }) => {
                   type="submit"
                   className="border-double bg-transparent border-secondary border-2 backdrop-blur-3xl flex justify-between gap-2 px-6"
                 >
-                  <FaMoneyBills className={`text-xl text-secondary`} />
-                  <PiPlusSquareDuotone className="text-lg text-secondary" />
+                  <FaMoneyBills className={`text-xl text-primary`} />
+                  <PiPlusSquareDuotone className="text-lg text-primary" />
                 </Button>{" "}
               </Form>
             </Formik>

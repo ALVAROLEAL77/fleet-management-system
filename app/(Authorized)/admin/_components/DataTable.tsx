@@ -75,21 +75,23 @@ export default function DataTable<Data>({
   });
 
   return (
-    <div className={cns + " text-primary font-rock tracking-widest font-thin "}>
-      {name && name}
+    <div
+      className={cns + " text-secondary font-rock tracking-widest font-thin "}
+    >
+      {name}
 
       <div className="flex items-center py-4">
         <Input
           placeholder="Filter..."
           value={globalFilter}
           onChange={(event) => setGlobalFilter(event.target.value)}
-          className="max-w-sm bg-transparent !border-double border-secondary  border-2"
+          className="max-w-sm bg-transparent !border-double border-secondary border-2"
         />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
               variant="outline"
-              className="ml-auto bg-transparent !border-double border-secondary text-secondary border-2"
+              className="ml-auto bg-transparent !border-double border-secondary border-2"
             >
               Columns <ChevronDown className="ml-2 h-4 w-4" />
             </Button>
@@ -102,7 +104,7 @@ export default function DataTable<Data>({
                 return (
                   <DropdownMenuCheckboxItem
                     key={column.id}
-                    className="capitalize text-secondary font-rock"
+                    className="capitalize text-primary font-rock"
                     checked={column.getIsVisible()}
                     onCheckedChange={(value: any) =>
                       column.toggleVisibility(!!value)
@@ -148,7 +150,7 @@ export default function DataTable<Data>({
                       className="!border-double border-secondary border-b-2 hover:bg-opacity-5 backdrop-blur-md hover:bg-white"
                     >
                       {row.getVisibleCells().map((cell) => {
-                        if (!(cell.column.id != "actions"))
+                        if (cell.column.id == "actions") {
                           return (
                             <TableCell key={"actions"} className="flex py-10">
                               <PiTrashSimpleDuotone
@@ -170,14 +172,16 @@ export default function DataTable<Data>({
                               />
                             </TableCell>
                           );
-                        return (
-                          <TableCell key={cell.id}>
-                            {
-                              //@ts-ignore
-                              cell.getValue()
-                            }
-                          </TableCell>
-                        );
+                        } else {
+                          return (
+                            <TableCell key={cell.id}>
+                              {
+                                //@ts-ignore
+                                cell.getValue()
+                              }
+                            </TableCell>
+                          );
+                        }
                       })}
                     </TableRow>
                   ))

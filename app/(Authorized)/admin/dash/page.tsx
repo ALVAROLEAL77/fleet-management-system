@@ -24,29 +24,25 @@ const DashBody = () => {
   const [waffleChartData, setWaffleChartData] = useState({});
   const [vehicleCount, setVehicleCount] = useState(0);
   const [driverCount, setDriverCount] = useState(0);
-  const [data, setdata] = useState({});
   const [tripCount, setTripCount] = useState(0);
   const [customerCount, setCustomerCount] = useState(0);
   const [bookCount, setBookCount] = useState(0);
   const { data: session, status } = useSession();
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GMAPS_API,
-  });
   useEffect(() => {
     Promise.all([
-      fetch(process.env.NEXT_PUBLIC_APP_URL + "api/driver", {
+      fetch(process.env.NEXT_PUBLIC_APP_URL + "driver", {
         next: { revalidate: 0 },
       }),
-      fetch(process.env.NEXT_PUBLIC_APP_URL + "api/vehicle", {
+      fetch(process.env.NEXT_PUBLIC_APP_URL + "vehicle", {
         next: { revalidate: 0 },
       }),
-      fetch(process.env.NEXT_PUBLIC_APP_URL + "api/customer", {
+      fetch(process.env.NEXT_PUBLIC_APP_URL + "customer", {
         next: { revalidate: 0 },
       }),
-      fetch(process.env.NEXT_PUBLIC_APP_URL + "api/trip", {
+      fetch(process.env.NEXT_PUBLIC_APP_URL + "trip", {
         next: { revalidate: 0 },
       }),
-      fetch(process.env.NEXT_PUBLIC_APP_URL + "api/booking", {
+      fetch(process.env.NEXT_PUBLIC_APP_URL + "booking", {
         next: { revalidate: 0 },
       }),
     ])
@@ -72,7 +68,7 @@ const DashBody = () => {
     setWaffleChartData({
       labels: ["books", "vehicles", "customers", "trips", "drivers"],
       data: [bookCount, vehicleCount, customerCount, tripCount, driverCount],
-      backgroundColor: ["#293641", "#31414e", "#394c5b", "#415768", "#182027"],
+      backgroundColor: ["#212f45", "#1d2a3e", "#1a2537", "#172030", "#131c29"],
     });
   }, [driverCount, vehicleCount, customerCount, tripCount, bookCount]);
 
@@ -84,25 +80,25 @@ const DashBody = () => {
     <>
       <div className="grid md:grid-cols-3 gap-y-10 grid-cols-1 md:py-4 md:px-0 md:m-0 md:mt-1  rounded-bl-3xl rounded-br-3xl md:w-full rounded-xl border-double border-secondary border-2 backdrop-blur-lg shadow-md shadow-secondary mt-20">
         <div className=" flex flex-col md:items-start items-center p-16 md:p-auto gap-5 justify-center h-[300px]">
-          <h4 className="md:text-lg text-sm font-bold font-rock tracking-widest flex items-center gap-2 text-secondary px-1">
+          <h4 className="md:text-lg text-sm font-bold font-rock tracking-widest flex items-center gap-2 text-primary px-1">
             <ImClock />
             {date.toLocaleString("en-US", {
               hour: "numeric",
               minute: "numeric",
             })}
           </h4>
-          <h1 className="md:text-[39px] text-5xl drop-shadow-primary font-extrabold font-rock tracking-widest uppercase bg-secondary text-transparent bg-clip-text break-words md:break-all keep-all drop-shadow-[0px_3px_10px_rgba(82,109,130,1)]">
+          <h1 className="md:text-[39px] text-5xl drop-shadow-primary font-extrabold font-rock tracking-widest uppercase bg-secondary text-primary bg-clip-text break-words md:break-all keep-all ">
             Dashboard
           </h1>
-          <h1 className="text-xl font-bold font-neon tracking-widest pt-1 capitalize text-primary drop-shadow-[0px_3px_3px_rgba(255,255,255,1)] break-words md:break-all keep-all ">
+          <h1 className="text-xl font-light font-rock tracking-widest pt-1 capitalize text-primary break-words md:break-all keep-all ">
             Welcome Back, {session?.user?.firstName}
           </h1>
         </div>
         <div className="md:col-span-2">
-          <DashMap isLoaded={isLoaded} />
+          <DashMap />
         </div>
       </div>
-      <div className="relative flex flex-wrap justify-center col-span-5 md:my-6 my-10 gap-3 items-start content-start transition-all duration-500">
+      <div className="relative flex flex-wrap justify-between md:my-6 my-10 w-full items-start content-start transition-all duration-500">
         <Card
           Icon={PiPersonFill}
           count={driverCount}
@@ -135,7 +131,7 @@ const DashBody = () => {
         />
       </div>
       <div className="w-full flex flex-col justify-center items-center rounded-bl-3xl rounded-br-3xl rounded-2xl border-double border-secondary border-2 backdrop-blur-3xl shadow-md shadow-secondary">
-        <h1 className="md:text-4xl text-4xl  font-bold font-rock tracking-widest p-5 uppercase text-secondary break-words break-all drop-shadow-[0px_3px_10px_rgba(82,109,130,1)]">
+        <h1 className="md:text-4xl text-4xl  font-bold font-rock tracking-widest p-5 uppercase text-primary break-words break-all ">
           Analytics
         </h1>
         <div className=" md:h-full grid md:grid-cols-2 md:grid-rows-2 grid-cols-1 w-full m-3">

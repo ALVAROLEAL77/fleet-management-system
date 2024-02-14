@@ -30,7 +30,7 @@ const Create = ({ refetch }) => {
   const [options, setOptions] = useState([]);
 
   useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/customer")
+    fetch(process.env.NEXT_PUBLIC_APP_URL + "customer")
       .then((res) => res.json())
       .then((res) => {
         setOptions(
@@ -47,7 +47,7 @@ const Create = ({ refetch }) => {
       });
   }, []);
   const onSubmit = (value) => {
-    fetch(process.env.NEXT_PUBLIC_APP_URL + `api/booking`, {
+    fetch(process.env.NEXT_PUBLIC_APP_URL + `booking`, {
       method: "post",
       body: JSON.stringify(value),
       headers: { "Content-Types": "application/json" },
@@ -59,8 +59,8 @@ const Create = ({ refetch }) => {
     <Dialog onOpenChange={refetch}>
       <DialogTrigger>
         <Button className="border-double bg-transparent border-secondary border-2 backdrop-blur-3xl flex justify-between gap-2">
-          <BiSolidBookContent className={`text-xl text-secondary`} />
-          <PiPlusSquareDuotone className="text-lg text-secondary" />
+          <BiSolidBookContent className={`text-xl text-primary`} />
+          <PiPlusSquareDuotone className="text-lg text-primary" />
         </Button>
       </DialogTrigger>
       <DialogContent className="md:min-w-[650px] min-w-full drop-shadow-2xl">
@@ -70,7 +70,7 @@ const Create = ({ refetch }) => {
           </DialogTitle>
           <DialogDescription className="font-rock pt-4 flex justify-evenly items-start  md:flex-nowrap flex-wrap w-fit">
             <BiSolidBookContent
-              className={`text-6xl text-secondary m-10 drop-shadow-[5px_20px_30px_rgba(82,109,130,1)]`}
+              className={`text-6xl text-primary m-10 drop-shadow-[5px_20px_30px_rgba(82,109,130,1)]`}
             />
 
             <Formik
@@ -114,7 +114,7 @@ const Create = ({ refetch }) => {
                 <Form className="flex flex-col justify-center items-center">
                   <div className="flex flex-col justify-start items-start flex-wrap h-[320px]">
                     <div className="md:m-3 h-20 w-48">
-                      <label>Customer</label>
+                      <label className="text-primary">Customer</label>
                       <Multiselect
                         options={options}
                         selectedValues={selectedOptions}
@@ -166,9 +166,9 @@ const Create = ({ refetch }) => {
                     </div>
 
                     <div className="md:m-3 h-20 w-48">
-                      <label>Booking Date</label>
+                      <label className="text-primary">Booking Date</label>
                       <Field
-                        className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
+                        className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background text-primary"
                         type="datetime-local"
                         name="bookingDate"
                       />
@@ -179,7 +179,7 @@ const Create = ({ refetch }) => {
                       />
                     </div>
                     <div className="md:m-3 h-20 w-48 z-30">
-                      <label>Start Location </label>
+                      <label className="text-primary">Start Location </label>
                       <Search
                         setFieldValue={setFieldValue}
                         setSelected={setSelectedStart}
@@ -193,7 +193,7 @@ const Create = ({ refetch }) => {
                     </div>
 
                     <div className="md:m-3 h-20 w-48 z-30">
-                      <label>End Location</label>
+                      <label className="text-primary">End Location</label>
                       <Search
                         setFieldValue={setFieldValue}
                         setSelected={setSelectedEnd}
@@ -206,9 +206,9 @@ const Create = ({ refetch }) => {
                       />
                     </div>
                     <div className="md:m-3 h-20 w-48">
-                      <label>Trip Purpose</label>
+                      <label className="text-primary">Trip Purpose</label>
                       <Field
-                        className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
+                        className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background text-primary"
                         type="text"
                         name="tripPurpose"
                       />
@@ -219,9 +219,9 @@ const Create = ({ refetch }) => {
                       />
                     </div>
                     <div className="md:m-3 h-20 w-48">
-                      <label>Status</label>
+                      <label className="text-primary">Status</label>
                       <Field
-                        className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
+                        className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background text-primary"
                         name="status"
                         component="select"
                       >
@@ -241,7 +241,7 @@ const Create = ({ refetch }) => {
                     type="submit"
                     className="border-double bg-transparent border-secondary border-2 backdrop-blur-3xl flex justify-between gap-2 px-6"
                   >
-                    <BiSolidBookContent className={`text-xl text-secondary`} />
+                    <BiSolidBookContent className={`text-xl text-primary`} />
                     <PiRecycleDuotone className="text-green-800  text-2xl cursor-pointer" />
                   </Button>{" "}
                 </Form>

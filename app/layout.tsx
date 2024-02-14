@@ -7,10 +7,11 @@ import { SessionProvider } from "next-auth/react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import Script from "next/script";
+import { ThemeProvider } from "./(Authorized)/admin/_components/ThemeProvider";
 require("dotenv").config();
 const inter = Inter({ subsets: ["latin"] });
 const contextClass = {
-  success: "bg-primary text-green-600",
+  success: "bg-transparent text-green-600",
   error: "bg-red-600 text-primary",
   info: "bg-blue-600 text-primary",
   warning: "bg-yellow-400 text-primary",
@@ -29,7 +30,10 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <Script src="http://localhost:8097"></Script>
       </head>
-      <body className={`${inter.className} bg-tertiary h-fit`}>
+      <body
+        className={`${inter.className} h-fit transition-colors duration-1000`}
+        suppressHydrationWarning={true}
+      >
         <ToastContainer
           toastClassName={({ type }) =>
             contextClass[type || "default"] +
@@ -43,9 +47,17 @@ export default function RootLayout({
           hideProgressBar={true}
           transition={Slide}
         />
-        {/* <div className="absolute inset-0 w-1/2 h-1/4 bg-gradient-to-br from-secondary via-transparent to-transparent"></div> */}
+        {/* <div className="absolute inset-0 w-1/2 h-1/4 bg-gradient-to-br from-secondary via-primary to-primary"></div> */}
         <div className="h-screen">
-          <SessionProvider>{children}</SessionProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {" "}
+            <SessionProvider>{children}</SessionProvider>
+          </ThemeProvider>
         </div>
       </body>
     </html>

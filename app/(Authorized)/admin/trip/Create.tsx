@@ -33,9 +33,9 @@ const Create = ({ refetch }) => {
 
   useEffect(() => {
     Promise.all([
-      fetch(process.env.NEXT_PUBLIC_APP_URL + "api/vehicle"),
-      fetch(process.env.NEXT_PUBLIC_APP_URL + "api/driver"),
-      fetch(process.env.NEXT_PUBLIC_APP_URL + "api/booking"),
+      fetch(process.env.NEXT_PUBLIC_APP_URL + "vehicle"),
+      fetch(process.env.NEXT_PUBLIC_APP_URL + "driver"),
+      fetch(process.env.NEXT_PUBLIC_APP_URL + "booking"),
     ])
       .then((res) => Promise.all(res.map((rs) => rs.json())))
       .then((res) => {
@@ -70,7 +70,7 @@ const Create = ({ refetch }) => {
   }, []);
 
   const onSubmit = (value) => {
-    fetch(process.env.NEXT_PUBLIC_APP_URL + `api/trip`, {
+    fetch(process.env.NEXT_PUBLIC_APP_URL + `trip`, {
       method: "post",
       body: JSON.stringify(value),
       headers: { "Content-Types": "application/json" },
@@ -82,8 +82,8 @@ const Create = ({ refetch }) => {
     <Dialog onOpenChange={refetch}>
       <DialogTrigger>
         <Button className="border-double bg-transparent border-secondary border-2 backdrop-blur-3xl flex justify-between gap-2">
-          <AiFillCarryOut className={`text-xl text-secondary`} />
-          <PiPlusSquareDuotone className="text-lg text-secondary" />
+          <AiFillCarryOut className={`text-xl text-primary`} />
+          <PiPlusSquareDuotone className="text-lg text-primary" />
         </Button>
       </DialogTrigger>
       <DialogContent className="md:min-w-[650px] min-w-full drop-shadow-2xl">
@@ -93,22 +93,18 @@ const Create = ({ refetch }) => {
           </DialogTitle>
           <DialogDescription className="font-rock pt-4 flex justify-evenly items-start  md:flex-nowrap flex-wrap w-fit">
             <AiFillCarryOut
-              className={`text-6xl text-secondary m-10 drop-shadow-[5px_20px_30px_rgba(82,109,130,1)]`}
+              className={`text-6xl text-primary m-10 drop-shadow-[5px_20px_30px_rgba(82,109,130,1)]`}
             />
 
             <Formik
               initialValues={{
                 startTime: "",
                 endTime: "",
-                distanceTraveled: "",
                 tripStatus: "",
               }}
               validationSchema={Yup.object().shape({
                 startTime: Yup.date().required("Start Time is required"),
                 endTime: Yup.date().required("End Time is required"),
-                distanceTraveled: Yup.number().required(
-                  "Distance Traveled is required"
-                ),
                 tripStatus: Yup.string().required("Trip Status is required"),
               })}
               onSubmit={(values) => {
@@ -122,7 +118,7 @@ const Create = ({ refetch }) => {
                 <div className="flex flex-col justify-start items-start flex-wrap h-[450px]">
                   <div className="md:m-3 h-20 w-48">
                     {" "}
-                    <label>Driver</label>
+                    <label className="text-primary">Driver</label>
                     <Multiselect
                       options={driverOptions}
                       selectedValues={selectedDriverOptions}
@@ -179,7 +175,7 @@ const Create = ({ refetch }) => {
                   </div>
                   <div className="md:m-3 h-20 w-48">
                     {" "}
-                    <label>Book</label>
+                    <label className="text-primary">Book</label>
                     <Multiselect
                       options={bookingOptions}
                       selectedValues={selectedBookingOptions}
@@ -236,7 +232,7 @@ const Create = ({ refetch }) => {
                   </div>
                   <div className="md:m-3 h-20 w-48">
                     {" "}
-                    <label>Vehicle</label>
+                    <label className="text-primary">Vehicle</label>
                     <Multiselect
                       options={vehicleOptions}
                       selectedValues={selectedVehicleOptions}
@@ -293,9 +289,9 @@ const Create = ({ refetch }) => {
                   </div>
                   <div className="md:m-3 h-20 w-48">
                     {" "}
-                    <label>Start Time</label>
+                    <label className="text-primary">Start Time</label>
                     <Field
-                      className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
+                      className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background text-primary"
                       type="datetime-local"
                       name="startTime"
                     />
@@ -307,9 +303,9 @@ const Create = ({ refetch }) => {
                   </div>
                   <div className="md:m-3 h-20 w-48">
                     {" "}
-                    <label>End Time</label>
+                    <label className="text-primary">End Time</label>
                     <Field
-                      className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
+                      className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background text-primary"
                       type="datetime-local"
                       name="endTime"
                     />
@@ -321,23 +317,9 @@ const Create = ({ refetch }) => {
                   </div>
                   <div className="md:m-3 h-20 w-48">
                     {" "}
-                    <label>Distance Traveled</label>
+                    <label className="text-primary">Trip Status</label>
                     <Field
-                      className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
-                      type="number"
-                      name="distanceTraveled"
-                    />
-                    <ErrorMessage
-                      className="text-red-900 text-[10px]"
-                      name="distanceTraveled"
-                      component="div"
-                    />
-                  </div>
-                  <div className="md:m-3 h-20 w-48">
-                    {" "}
-                    <label>Trip Status</label>
-                    <Field
-                      className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
+                      className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background text-primary"
                       name="tripStatus"
                       component="select"
                     >
@@ -357,8 +339,8 @@ const Create = ({ refetch }) => {
                   type="submit"
                   className="border-double bg-transparent border-secondary border-2 backdrop-blur-3xl flex justify-between gap-2 px-6"
                 >
-                  <AiFillCarryOut className={`text-xl text-secondary`} />
-                  <PiPlusSquareDuotone className="text-lg text-secondary" />
+                  <AiFillCarryOut className={`text-xl text-primary`} />
+                  <PiPlusSquareDuotone className="text-lg text-primary" />
                 </Button>{" "}
               </Form>
             </Formik>

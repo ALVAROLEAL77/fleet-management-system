@@ -35,14 +35,14 @@ const Driver = () => {
     },
   ]);
   const refetch = () => {
-    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/user")
+    fetch(process.env.NEXT_PUBLIC_APP_URL + "user")
       .then((res) => res.json())
       .then((res) => {
         setData(res);
       });
   };
   useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/user", {
+    fetch(process.env.NEXT_PUBLIC_APP_URL + "user", {
       next: { revalidate: 0 },
     })
       .then((res) => res.json())
@@ -54,15 +54,15 @@ const Driver = () => {
   function deleteData(id) {
     setData(data.filter((dt) => dt.id != id));
 
-    return fetch(process.env.NEXT_PUBLIC_APP_URL + `api/user/${id}`, {
+    return fetch(process.env.NEXT_PUBLIC_APP_URL + `user/${id}`, {
       method: "delete",
       headers: { "Content-Types": "application/json" },
     }).then();
   }
   return (
     <div className="w-full rounded-xl border-double border-secondary border-2 backdrop-blur-3xl shadow-md shadow-secondary p-7 pt-3">
-      <div className="flex justify-between w-full drop-shadow-[0px_3px_10px_rgba(82,109,130,1)]">
-        <h1 className="font-rock text-secondary tracking-widest space-x-10 uppercase m-3 w-fit">
+      <div className="flex justify-between w-full ">
+        <h1 className="font-rock text-primary tracking-widest space-x-10 uppercase m-3 w-fit">
           {path.split("/").join(" > ").substring(2)}|{" "}
           <Link href={"/admin/userrole"}>User Roles</Link>
         </h1>
@@ -72,7 +72,7 @@ const Driver = () => {
         data={data}
         columns={columns}
         cns={
-          "w-full !border-double border-secondary border-2 p-4 rounded-lg shadow-md shadow-secondary drop-shadow-[0px_3px_10px_rgba(82,109,130,1)]"
+          "w-full !border-double border-secondary border-2 p-4 rounded-lg shadow-md shadow-secondary "
         }
         name={"Users"}
         refetch={refetch}

@@ -36,7 +36,6 @@ export const authOptions: NextAuthOptions = {
             },
           ],
         });
-        console.log(User);
         if (
           User != null &&
           compareSync(credentials?.password as string, User.password)

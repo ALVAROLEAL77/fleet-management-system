@@ -44,7 +44,7 @@ const Vehicle = () => {
   ]);
 
   const refetch = () => {
-    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/vehicle", {
+    fetch(process.env.NEXT_PUBLIC_APP_URL + "vehicle", {
       next: { revalidate: 0 },
     })
       .then((res) => res.json())
@@ -53,7 +53,7 @@ const Vehicle = () => {
       });
   };
   useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/vehicle", {
+    fetch(process.env.NEXT_PUBLIC_APP_URL + "vehicle", {
       next: { revalidate: 0 },
     })
       .then((res) => res.json())
@@ -64,15 +64,15 @@ const Vehicle = () => {
   function deleteData(id) {
     setVehicleData(vehicleData.filter((dt) => dt.id != id));
 
-    return fetch(process.env.NEXT_PUBLIC_APP_URL + `api/vehicle/${id}`, {
+    return fetch(process.env.NEXT_PUBLIC_APP_URL + `vehicle/${id}`, {
       method: "delete",
       headers: { "Content-Types": "application/json" },
     }).then();
   }
   return (
-    <div className="w-full rounded-xl border-double border-secondary md:border-2 md:backdrop-blur-3xl md:shadow-md md:shadow-secondary bg-tertiary bg-opacity-50 p-7 pt-3 mt-20 md:mt-0">
-      <div className="flex justify-between w-full drop-shadow-[0px_3px_10px_rgba(82,109,130,1)]">
-        <h1 className="font-rock text-secondary tracking-widest space-x-10 uppercase m-3 md:block hidden">
+    <div className="w-full rounded-xl border-double border-secondary  md:backdrop-blur-3xl md:shadow-md md:shadow-secondary bg-tertiary/20 bg-opacity-50 p-7 pt-3 mt-20 md:mt-0">
+      <div className="flex justify-between w-full ">
+        <h1 className="font-rock text-primary tracking-widest space-x-10 uppercase m-3 md:block hidden">
           {path.split("/").join(" > ").substring(2)}
         </h1>
         <Create refetch={refetch} />
@@ -83,7 +83,7 @@ const Vehicle = () => {
         columns={vehicleColumns}
         deleteData={deleteData}
         cns={
-          "shadow-lg !border-double border-secondary border-2 p-4 rounded-lg shadow-secondary drop-shadow-[0px_3px_10px_rgba(82,109,130,1)]"
+          "shadow-lg !border-double border-secondary border-2 p-4 rounded-lg shadow-secondary "
         }
         name={"Vehicles"}
         refetch={refetch}

@@ -24,7 +24,7 @@ const Modal = ({ title, message, ButtonIcon, buttonText, children }) => {
           <DialogTitle className="font-rock text-primary">{title}</DialogTitle>
           <DialogDescription className="font-rock pt-4 flex flex-col justify-center items-center">
             <h3 className="font-bold text-lg ">
-              <BsFillShieldLockFill className="text-secondary text-3xl" />
+              <BsFillShieldLockFill className="text-primary text-3xl" />
             </h3>
             <p className="py-5 text-lg">{message}</p>
           </DialogDescription>

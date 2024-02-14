@@ -14,9 +14,9 @@ const PLayout = ({ children }: { children: ReactNode }) => {
 
   return (
     <>
-      <div className="overflow-hidden bg-gradient-to-tl to-[#202B34] via-transparent from-[#202B34] w-full flex justify-stretch items-stretch">
+      <div className="overflow-hidden md:gap-0 w-full flex justify-stretch items-stretch">
         <SideBar mSlider={mSlider} />
-        <div className="flex flex-col items-start justify-start w-full md:mx-8 m-1 md:m-0 md:mt-1 ">
+        <div className="flex flex-col items-start justify-start w-full md:mx-6 m-1 md:m-0 md:mt-1 ">
           <Header setdrop={setdrop} drop={drop} setMSlider={setMSlider} />
           {children}
         </div>

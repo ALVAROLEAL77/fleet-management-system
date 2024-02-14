@@ -26,7 +26,7 @@ const Update = ({ id, refetch }) => {
   const [value, setValue] = useState();
   const get = () => {
     if (id != undefined) {
-      fetch(process.env.NEXT_PUBLIC_APP_URL + `api/user/${id}`, {
+      fetch(process.env.NEXT_PUBLIC_APP_URL + `user/${id}`, {
         next: { revalidate: 0 },
       })
         .then((res) => res.json())
@@ -38,7 +38,7 @@ const Update = ({ id, refetch }) => {
     ...value,
   };
   const onSubmit = (value, id) => {
-    fetch(process.env.NEXT_PUBLIC_APP_URL + `api/user/${id}`, {
+    fetch(process.env.NEXT_PUBLIC_APP_URL + `user/${id}`, {
       method: "put",
       body: JSON.stringify(value),
       next: { revalidate: 0 },
@@ -65,7 +65,7 @@ const Update = ({ id, refetch }) => {
               </DialogTitle>
               <DialogDescription className="font-rock pt-4 flex justify-evenly items-start  md:flex-nowrap flex-wrap w-fit">
                 <FaUserShield
-                  className={`text-6xl text-secondary m-10 drop-shadow-[5px_20px_30px_rgba(82,109,130,1)]`}
+                  className={`text-6xl text-primary m-10 drop-shadow-[5px_20px_30px_rgba(82,109,130,1)]`}
                 />
 
                 <Formik
@@ -88,9 +88,9 @@ const Update = ({ id, refetch }) => {
                     <div className="flex flex-col justify-start items-start flex-wrap h-[320px]">
                       <div className="md:m-3 h-20 w-48">
                         {" "}
-                        <label>User Role</label>
+                        <label className="text-primary">User Role</label>
                         <Field
-                          className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
+                          className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background text-primary"
                           type="text"
                           name="userRoleId"
                         />
@@ -102,9 +102,9 @@ const Update = ({ id, refetch }) => {
                       </div>
                       <div className="md:m-3 h-20 w-48">
                         {" "}
-                        <label>Username</label>
+                        <label className="text-primary">Username</label>
                         <Field
-                          className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
+                          className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background text-primary"
                           type="text"
                           name="username"
                         />
@@ -116,9 +116,9 @@ const Update = ({ id, refetch }) => {
                       </div>
                       <div className="md:m-3 h-20 w-48">
                         {" "}
-                        <label>Password</label>
+                        <label className="text-primary">Password</label>
                         <Field
-                          className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
+                          className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background text-primary"
                           type="password"
                           name="password"
                         />
@@ -130,9 +130,9 @@ const Update = ({ id, refetch }) => {
                       </div>
                       <div className="md:m-3 h-20 w-48">
                         {" "}
-                        <label>First Name</label>
+                        <label className="text-primary">First Name</label>
                         <Field
-                          className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
+                          className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background text-primary"
                           type="text"
                           name="firstName"
                         />
@@ -144,9 +144,9 @@ const Update = ({ id, refetch }) => {
                       </div>
                       <div className="md:m-3 h-20 w-48">
                         {" "}
-                        <label>Last Name</label>
+                        <label className="text-primary">Last Name</label>
                         <Field
-                          className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
+                          className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background text-primary"
                           type="text"
                           name="lastName"
                         />
@@ -158,9 +158,9 @@ const Update = ({ id, refetch }) => {
                       </div>
                       <div className="md:m-3 h-20 w-48">
                         {" "}
-                        <label>Email</label>
+                        <label className="text-primary">Email</label>
                         <Field
-                          className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
+                          className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background text-primary"
                           type="email"
                           name="email"
                         />
@@ -175,7 +175,7 @@ const Update = ({ id, refetch }) => {
                       type="submit"
                       className="border-double bg-transparent border-secondary border-2 backdrop-blur-3xl flex justify-between gap-2 px-6"
                     >
-                      <FaUserShield className={`text-xl text-secondary`} />
+                      <FaUserShield className={`text-xl text-primary`} />
                       <PiRecycleDuotone className="text-green-800  text-lg cursor-pointer" />
                     </Button>{" "}
                   </Form>

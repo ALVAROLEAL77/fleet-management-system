@@ -30,7 +30,7 @@ const Create = ({ refetch }) => {
   const [options, setOptions] = useState([]);
 
   useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_APP_URL + "api/vehicle")
+    fetch(process.env.NEXT_PUBLIC_APP_URL + "vehicle")
       .then((res) => res.json())
       .then((res) => {
         console.log("Vehicle Data:", res);
@@ -48,7 +48,7 @@ const Create = ({ refetch }) => {
       });
   }, []);
   const onSubmit = (value) => {
-    fetch(process.env.NEXT_PUBLIC_APP_URL + `api/maintenancerecord`, {
+    fetch(process.env.NEXT_PUBLIC_APP_URL + `maintenancerecord`, {
       method: "post",
       body: JSON.stringify(value),
       headers: { "Content-Types": "application/json" },
@@ -63,14 +63,11 @@ const Create = ({ refetch }) => {
             amount: value["maintenanceCost"],
             description: value["notes"],
           };
-          fetch(
-            process.env.NEXT_PUBLIC_APP_URL + `api/expense/${res.result.id}`,
-            {
-              method: "post",
-              body: JSON.stringify(expense),
-              headers: { "Content-Types": "application/json" },
-            }
-          );
+          fetch(process.env.NEXT_PUBLIC_APP_URL + `expense/${res.result.id}`, {
+            method: "post",
+            body: JSON.stringify(expense),
+            headers: { "Content-Types": "application/json" },
+          });
         }
         toast.success(res.message);
       });
@@ -79,8 +76,8 @@ const Create = ({ refetch }) => {
     <Dialog onOpenChange={refetch}>
       <DialogTrigger>
         <Button className="border-double bg-transparent border-secondary border-2 backdrop-blur-3xl flex justify-between gap-2">
-          <BiSolidCarMechanic className={`text-xl text-secondary`} />
-          <PiPlusSquareDuotone className="text-lg text-secondary" />
+          <BiSolidCarMechanic className={`text-xl text-primary`} />
+          <PiPlusSquareDuotone className="text-lg text-primary" />
         </Button>
       </DialogTrigger>
       <DialogContent className="md:min-w-[650px] min-w-full drop-shadow-2xl">
@@ -90,7 +87,7 @@ const Create = ({ refetch }) => {
           </DialogTitle>
           <DialogDescription className="font-rock pt-4 flex justify-evenly items-start  md:flex-nowrap flex-wrap w-fit">
             <BiSolidCarMechanic
-              className={`text-6xl text-secondary m-10 drop-shadow-[5px_20px_30px_rgba(82,109,130,1)]`}
+              className={`text-6xl text-primary m-10 drop-shadow-[5px_20px_30px_rgba(82,109,130,1)]`}
             />
 
             <Formik
@@ -131,7 +128,7 @@ const Create = ({ refetch }) => {
                     </label>
                     <input
                       className="drop-shadow-[5px_20px_30px_rgba(82,109,130,1)] mr-2 mt-[0.3rem] h-3.5 w-8 appearance-none rounded-[0.4375rem] bg-gray-500 before:pointer-events-none before:absolute before:h-3.5 before:w-3.5 before:rounded-full before:bg-secondary before:content-[''] after:absolute 
-                    after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:bg-gray-500 after:drop-shadow-[5px_20px_30px_rgba(82,109,130,1)] after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-secondary checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ml-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:bg-secondary checked:after:shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),_0_2px_2px_0_rgba(0,0,0,0.14),_0_1px_5px_0_rgba(0,0,0,0.12)] checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[3px_-1px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-[''] checked:focus:border-secondary checked:focus:bg-secondary checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100 checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:bg-neutral-600 dark:after:bg-neutral-400 dark:checked:bg-primary dark:checked:after:bg-primary dark:focus:before:shadow-[3px_-1px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca]"
+                    after:z-[2] after:-mt-[0.1875rem] after:h-5 after:w-5 after:rounded-full after:border-none after:bg-gray-500 after:drop-shadow-[5px_20px_30px_rgba(82,109,130,1)] after:transition-[background-color_0.2s,transform_0.2s] after:content-[''] checked:bg-secondary checked:after:absolute checked:after:z-[2] checked:after:-mt-[3px] checked:after:ml-[1.0625rem] checked:after:h-5 checked:after:w-5 checked:after:rounded-full checked:after:border-none checked:after:bg-secondary checked:after:shadow-[0_3px_1px_-2px_rgba(0,0,0,0.2),_0_2px_2px_0_rgba(0,0,0,0.14),_0_1px_5px_0_rgba(0,0,0,0.12)] checked:after:transition-[background-color_0.2s,transform_0.2s] checked:after:content-[''] hover:cursor-pointer focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[3px_-1px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] focus:after:absolute focus:after:z-[1] focus:after:block focus:after:h-5 focus:after:w-5 focus:after:rounded-full focus:after:content-[''] checked:focus:border-secondary checked:focus:bg-secondary checked:focus:before:ml-[1.0625rem] checked:focus:before:scale-100 checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:bg-neutral-600 dark:after:bg-neutral-400 dark:checked:bg-transparent dark:checked:after:bg-transparent dark:focus:before:shadow-[3px_-1px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:before:shadow-[3px_-1px_0px_13px_#3b71ca]"
                       type="checkbox"
                       role="switch"
                       id="flexSwitchChecked"
@@ -148,7 +145,7 @@ const Create = ({ refetch }) => {
                   <div className="flex flex-col justify-start items-start flex-wrap h-[320px]">
                     <div className="md:m-3 h-20 w-48">
                       {" "}
-                      <label>Vehicle</label>
+                      <label className="text-primary">Vehicle</label>
                       <Multiselect
                         options={options}
                         selectedValues={selectedOptions}
@@ -200,9 +197,9 @@ const Create = ({ refetch }) => {
                     </div>
                     <div className="md:m-3 h-20 w-48">
                       {" "}
-                      <label>Maintenance Type</label>
+                      <label className="text-primary">Maintenance Type</label>
                       <Field
-                        className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
+                        className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background text-primary"
                         type="text"
                         name="maintenanceType"
                       />
@@ -214,9 +211,9 @@ const Create = ({ refetch }) => {
                     </div>
                     <div className="md:m-3 h-20 w-48">
                       {" "}
-                      <label>Maintenance Date</label>
+                      <label className="text-primary">Maintenance Date</label>
                       <Field
-                        className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
+                        className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background text-primary"
                         type="datetime-local"
                         name="maintenanceDate"
                       />
@@ -228,9 +225,9 @@ const Create = ({ refetch }) => {
                     </div>
                     <div className="md:m-3 h-20 w-48">
                       {" "}
-                      <label>Maintenance Cost</label>
+                      <label className="text-primary">Maintenance Cost</label>
                       <Field
-                        className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
+                        className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background text-primary"
                         type="number"
                         name="maintenanceCost"
                       />
@@ -242,9 +239,9 @@ const Create = ({ refetch }) => {
                     </div>
                     <div className="md:m-3 h-20 w-48">
                       {" "}
-                      <label>Notes</label>
+                      <label className="text-primary">Notes</label>
                       <Field
-                        className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background"
+                        className="flex h-10 w-full rounded-md bg-transparent border-double border-secondary border-2 backdrop-blur-3xl px-3 py-2 text-sm ring-offset-background text-primary"
                         type="text"
                         name="notes"
                       />
@@ -259,8 +256,8 @@ const Create = ({ refetch }) => {
                     type="submit"
                     className="border-double bg-transparent border-secondary border-2 backdrop-blur-3xl flex justify-between gap-2 px-6"
                   >
-                    <BiSolidCarMechanic className={`text-xl text-secondary`} />
-                    <PiPlusSquareDuotone className="text-lg text-secondary" />
+                    <BiSolidCarMechanic className={`text-xl text-primary`} />
+                    <PiPlusSquareDuotone className="text-lg text-primary" />
                   </Button>{" "}
                 </Form>
               )}

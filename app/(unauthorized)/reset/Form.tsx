@@ -19,13 +19,13 @@ const HForm = ({ callBack }: any) => {
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <Link
             href="#"
-            className="flex items-center mb-2 md:text-4xl text-3xl font-semibold font-neon h-20 space-x-9 bg-gradient-to-tl via-secondary from-tertiary to-primary text-transparent  bg-clip-text text-center drop-shadow-[0px_3px_12px_rgba(82,109,130,1)]"
+            className="flex items-center mb-2 md:text-4xl text-3xl font-semibold font-neon h-20 space-x-9 bg-gradient-to-tl via-secondary from-tertiary to-primary text-primary  bg-clip-text text-center drop-shadow-[0px_3px_12px_rgba(82,109,130,1)]"
           >
             Fleet Management System
           </Link>
           <div className="w-full md:w-1/2 bg-black bg-opacity-30 backdrop-blur-3xl rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 !border-double border-secondary border-4 drop-shadow-[0px_3px_12px_rgba(82,109,130,1)]">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-              <h1 className="flex justify-center text-md font-bold leading-tight text-secondary font-neon md:text-2xl">
+              <h1 className="flex justify-center text-md font-bold leading-tight text-primary font-neon md:text-2xl">
                 Sign-in
               </h1>
               <Formik
@@ -64,12 +64,12 @@ const HForm = ({ callBack }: any) => {
                   <Form className="space-y-4 md:space-y-6">
                     <div className="relative h-16">
                       <span className="absolute inset-y-0 -translate-y-2 flex items-center pl-4">
-                        <TbBrandGmail className="self-center text-secondary text-2xl" />
+                        <TbBrandGmail className="self-center text-primary text-2xl" />
                       </span>
                       <Field
                         type="email"
                         name="email"
-                        className="pl-12 bg-transparent text-secondary sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 !border-double border-secondary  border-4 placeholder-secondary"
+                        className="pl-12 bg-transparent text-primary sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 !border-double border-secondary  border-4 placeholder-secondary"
                         placeholder="name@company.com"
                         required
                       />
@@ -82,13 +82,13 @@ const HForm = ({ callBack }: any) => {
                     </div>
                     <div className="relative h-16">
                       <span className="absolute inset-y-0 -translate-y-2 flex items-center pl-4">
-                        <TbLockQuestion className="self-center text-secondary text-2xl" />{" "}
+                        <TbLockQuestion className="self-center text-primary text-2xl" />{" "}
                       </span>
                       <Field
                         type="password"
                         name="password"
                         placeholder="••••••••"
-                        className="pl-12 bg-transparent text-secondary sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 !border-double border-secondary border-4 placeholder-secondary"
+                        className="pl-12 bg-transparent text-primary sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 !border-double border-secondary border-4 placeholder-secondary"
                         required
                       />
                       <ErrorMessage
@@ -111,7 +111,7 @@ const HForm = ({ callBack }: any) => {
                     )}
                     <button
                       type="submit"
-                      className="w-full text-secondary bg-transparent !border-double border-secondary  border-2 placeholder-secondary hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover-bg-primary-700 dark:focus:ring-primary-800"
+                      className="w-full text-primary bg-transparent !border-double border-secondary  border-2 placeholder-secondary hover:bg-transparent-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-transparent-600 dark:hover-bg-transparent-700 dark:focus:ring-primary-800"
                       disabled={isSubmitting}
                     >
                       Sign in

@@ -13,6 +13,10 @@ module.exports = {
         type: Sequelize.UUID,
         references: { model: "UserRoles", key: "id" },
       },
+      driverId: {
+        type: Sequelize.UUID,
+        references: { model: "Drivers", key: "id" },
+      },
       username: {
         type: Sequelize.STRING,
       },

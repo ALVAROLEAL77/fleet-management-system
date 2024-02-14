@@ -19,10 +19,10 @@ export default function BarCharter() {
   useEffect(() => {
     // Fetch departments and employees data concurrently using Promise.all
     Promise.all([
-      fetch(process.env.NEXT_PUBLIC_APP_URL + "api/fuelingrecord", {
+      fetch(process.env.NEXT_PUBLIC_APP_URL + "fuelingrecord", {
         next: { revalidate: 0 },
       }),
-      fetch(process.env.NEXT_PUBLIC_APP_URL + "api/vehicle", {
+      fetch(process.env.NEXT_PUBLIC_APP_URL + "vehicle", {
         next: { revalidate: 0 },
       }),
     ])
@@ -55,7 +55,7 @@ export default function BarCharter() {
     <>
       {data ? (
         <div className="relative flex flex-col break-words mb-6 py-4 m-3 md:flex-1 rounded-2xl border-double border-secondary border-2 backdrop-blur-3xl shadow-md shadow-secondary">
-          <h1 className="font-rock font-extralight uppercase text-secondary px-2 text-center pb-4 text-lg">
+          <h1 className="font-rock font-extralight uppercase text-primary px-2 text-center pb-4 text-lg">
             Fuel Consumptions
           </h1>
           <ResponsiveContainer width="100%" height={200}>

@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       User.belongsTo(models.UserRole, { foreignKey: "userRoleId" });
+      User.belongsTo(models.Driver, { foreignKey: "driverId" });
     }
   }
   User.init(
@@ -19,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       lastName: DataTypes.STRING,
       email: DataTypes.STRING,
       userRoleId: DataTypes.UUID,
+      driverId: DataTypes.UUID,
     },
     {
       sequelize,
